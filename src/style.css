@@ -1,4 +1,54 @@
+/* -- Estilos de la primera vista index.html --*/
 body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     background-image: url("image/background.png");
     background-size: cover;
+    color: white;
+    font-family: "Segoe UI";
+}
+#filterByAge {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 5%;
+    letter-spacing: 0.35em;
+    font-weight: bold;
+}
+#questionOne {
+    font-size: xx-large;
+}
+#questionTwo {
+    font-size: x-large;
+}
+#yes {
+    width: 100px;
+    height: 35px;
+    margin-right: 100px;
+    border-radius: 5px;
+    border-width: 3px;
+    border-color: #9EFB07;
+    color: #9EFB07;
+    font-weight: bolder;
+    text-shadow: 0 0 3px #365503;
+    background-color: #08B2C9;
+    letter-spacing: 0.25em;
+    font-family: "Segoe UI";
+    font-size: large;
+}
+#no {
+    width: 100px;
+    height: 35px;
+    margin-left: 100px;
+    border-radius: 5px;
+    border-width: 3px;
+    border-color: #9EFB07;
+    color: #9EFB07;
+    font-weight: bolder;
+    text-shadow: 0 0 3px #365503;
+    background-color: #08B2C9;
+    letter-spacing: 0.25em;
+    font-family: "Segoe UI";
+    font-size: large;
 }
