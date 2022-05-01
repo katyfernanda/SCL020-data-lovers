@@ -1,9 +1,9 @@
-// estas funciones son de ejemplo
-
-export const example = () => {
-  return 'example';
+export const example = (papitas) => {
+  console.log(papitas);
 };
 
 export const anotherExample = () => {
   return 'OMG';
 };
+
+

@@ -15,6 +15,7 @@
     </header>
     <main>
       <!-- vista del yes y no -->
+      <div id ="screen1">
       <div id="filterByAge">
         <p id="questionOne">You must be 18+ to view this page</p>
         <p id="questionTwo">Are you over oigtheen?</p>
@@ -22,6 +23,31 @@
       <div id="buttons">
         <button id="yes">Yes</button>
         <button id="no">No</button>
+      </div>
+    </div>
+    <!-- screen2 -->
+      <div id= "screen2" class="shade" >
+        <div id="welcome">
+            <p id="welcome">Welcome</p>
+            <p id="information">You can see information of adult animated science fiction sitcom</p>
+        </div>
+      
+        <!-- Selector by name -->
+        <form id="byName">
+            <label for="searchByName">Search by Name</label>
+            <input id="input" type="text">
+            <select id="searchByName" form="byName">
+            </select>
+            <button id="goName">Go</button>
+        </form>
+        <!-- Selector by origin -->
+        <form id="byOrigin">
+            <label for="searchByOrigin">Search by planet of origin</label>
+            <select id="searchByOrigin" form="byOrigin">                    
+            </select>
+            <button id="goOrigin">Go</button>
+
+        </form>
       </div>
     </main>
     <script src="main.js" type="module"></script>
