@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Data Lovers - Rick and Morty</title>
     <link rel="stylesheet" href="style.css" />
   </head>
@@ -10,44 +10,61 @@
   <body>
     <header>
       <nav>
-        <a href="index.html"> <img src= "https://github.com/camicamposc/SCL020-data-lovers/blob/main/src/image/logoRickAndMorty.png?raw=true" alt="logoRickAndMorty"></a>
+        <a href="index.html">
+          <img
+            src="https://github.com/camicamposc/SCL020-data-lovers/blob/main/src/image/logoRickAndMorty.png?raw=true"
+            alt="logoRickAndMorty"
+        /></a>
       </nav>
     </header>
     <main>
-      <!-- vista del yes y no -->
-      <div id ="screen1">
-      <div id="filterByAge">
-        <p id="questionOne">You must be 18+ to view this page</p>
-        <p id="questionTwo">Are you over oigtheen?</p>
-      </div>
-      <div id="buttons">
-        <button id="yes">Yes</button>
-        <button id="no">No</button>
-      </div>
-    </div>
-    <!-- screen2 -->
-      <div id= "screen2" class="shade" >
-        <div id="welcome">
-            <p id="welcome">Welcome</p>
-            <p id="information">You can see information of adult animated science fiction sitcom</p>
+      <!--------------------screen 1--------------------- Screen YES and NO ------------------->
+      <div id="screen1">
+        <div id="filterByAge">
+          <p id="questionOne">You must be 18+ to view this page</p>
+          <p id="questionTwo">Are you over oigtheen?</p>
         </div>
-      
-        <!-- Selector by name -->
-        <form id="byName">
-            <label for="searchByName">Search by Name</label>
-            <input id="input" type="text">
-            <select id="searchByName" form="byName">
-            </select>
-            <button id="goName">Go</button>
+        <div id="buttons">
+          <button id="yes">Yes</button>
+          <button id="no">No</button>
+        </div>
+      </div>
+      <!--------------------------- screen2 ----------------------------Selectors---------------->
+      <div id="screen2" class="shade">
+        <div id="welcome">
+          <p id="welcome">Welcome</p>
+          <p id="information">
+            You can see information of adult animated science fiction sitcom
+          </p>
+        </div>
+        <!---------------- Selector by name ---------->
+        <form id="formByName">
+          <label for="searchByName">Search by Name</label>
+          <input id="searchByName" name="searchByName" type="text" />
+          <button id="goName">Go</button>
         </form>
-        <!-- Selector by origin -->
-        <form id="byOrigin">
-            <label for="searchByOrigin">Search by planet of origin</label>
-            <select id="searchByOrigin" form="byOrigin">                    
-            </select>
-            <button id="goOrigin">Go</button>
-
-        </form>
+        <div>
+          <p id="textError"></p>
+        </div>
+      </div>
+      <!------------------------------------ screen Card --------------------------------------->
+      <div id="screenCard">
+        <div>
+          <button id="closed">X</button>
+        </div>
+        <div id="cardCharacter">
+          <div id="image"></div>
+          <ul>
+            <li id="name"></li>
+            <li id="species"></li>
+            <li id="gender"></li>
+            <li id="origin"></li>
+            <li id="allEpisode">
+              Episodes:
+              <ul id="listEpisode"></ul>
+            </li>
+          </ul>
+        </div>
       </div>
     </main>
     <script src="main.js" type="module"></script>

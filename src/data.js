@@ -3,7 +3,14 @@ export const example = (papitas) => {
 };
 
 export const anotherExample = () => {
-  return 'OMG';
+  return "OMG";
 };
 
-
+export const filterData = (search, allInfo) => {
+  let dataCharacterSelected = [];
+  console.log(search);
+  dataCharacterSelected = allInfo.filter(
+    (info) => info.name.toLocaleLowerCase() == search.toLocaleLowerCase()
+  );
+  return dataCharacterSelected;
+};
