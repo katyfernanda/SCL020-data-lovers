@@ -35,6 +35,7 @@ let dataCharacterSelected = []; //3 personajes con mismo nombre
 
 go.addEventListener("click", (event) => {
   event.preventDefault();
+  screen2.style.display = "none";
   screenCard.style.display = "block";
   dataCharacterSelected = filterData(searchByName.value, allInfo);
   console.log(dataCharacterSelected);
