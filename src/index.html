@@ -37,7 +37,7 @@
             You can see information of adult animated science fiction sitcom
           </p>
         </div>
-        <!---------------- Selector by name ---------->
+        <!---------------- Search by name ---------->
         <form id="formByName">
           <label for="searchByName">Search by Name</label>
           <input id="searchByName" name="searchByName" type="text" />
@@ -46,8 +46,40 @@
         <div>
           <p id="textError"></p>
         </div>
+        <div id="allSelectors">
+          <!--------------- Selector by Status ---------->
+          <div id="selectorSpecies">
+            <p>Species</p>
+            <select name="selectors" id="species">
+              <option disabled selected>Select by Species</option>
+              <option value="marciano">marciano</option>
+              <option value="humano">humano</option>
+              <option value="ave">ave</option>
+            </select>
+          </div>
+          <!--------------- Selector by Planet ---------->
+          <div id="selectorOrigin">
+            <p>Planet</p>
+            <select name="selectors" id="origin">
+              <option disabled selected>Select by Planet of Origin</option>
+              <option value="tierra">tierra</option>
+              <option value="marte">marte</option>
+              <option value="mercurio">mercurio</option>
+            </select>
+          </div>
+          <!--------------- Selector by Status ---------->
+          <div id="selectorStatus">
+            <p>Status</p>
+            <select name="selectors" id="status">
+              <option disabled selected>Select by Status</option>
+              <option value="vivo">vivo</option>
+              <option value="muerto">muerto</option>
+              <option value="nada">nada</option>
+            </select>
+          </div>
+        </div>
       </div>
-      <!------------------------------------ screen Card --------------------------------------->
+      <!-- ---------------------------------- screen Card ------------------------------------- -->
       <div id="screenCard">
         <div>
           <button id="closed">X</button>
