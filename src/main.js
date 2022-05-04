@@ -46,6 +46,23 @@ go.addEventListener("click", (event) => {
   });
   document.getElementById("cardCharacter").innerHTML = allCharacters;
 });
+// -------funcion para mostrar los estados segun lo seleccionado
+const status = document.getElementById("status");
+let statusValue = "";
+const origin = document.getElementById("origin");
+origin.addEventListener("change", () => {
+  limpiar();
+});
+
+status.addEventListener("change", () => {
+  statusValue = status.value;
+  console.log(status.options.selectedIndex);
+  console.log(statusValue);
+});
+
+const limpiar = () => {
+  status.value = status.options[0].value;
+};
 
 // ------------------------------funcion que crea cada tarjeta
 const createNewCard = (info) => {
