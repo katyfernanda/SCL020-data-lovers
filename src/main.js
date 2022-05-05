@@ -1,10 +1,17 @@
 import rickAndMortyData from "./data/rickandmorty/rickandmorty.js";
-import { filterData } from "./data.js";
+import {
+  allStatus,
+  filterData,
+  charactersStatus,
+  clean,
+  lookSelector,
+} from "./data.js";
 // import {example} from './data.js';
 const screen1 = document.getElementById("screen1");
 const screen2 = document.getElementById("screen2");
 const screenCard = document.getElementById("screenCard");
 const cardCharacter = document.getElementById("cardCharacter");
+const containerStatus = document.getElementById("status");
 screen2.style.display = "none";
 screenCard.style.display = "none";
 
@@ -21,9 +28,16 @@ const btnYes = document.getElementById("yes");
 btnYes.addEventListener("click", () => {
   screen1.style.display = "none";
   screen2.style.display = "block";
+  // -----------al seleccionar yes se cargan los selectores
+  // ----selector por estado
+  const onlyStatus = allStatus(allInfo);
+  let optionStatus = `<option value="nothing" disabled selected>Select by Status</option>`;
+  onlyStatus.forEach(
+    (status) =>
+      (optionStatus += `<option value= "${status}">${status}</option><br>`)
+  );
+  containerStatus.innerHTML = optionStatus;
 });
-// example(rickAndMortyData.results);
-// const names = allInfo.map((element)=> element.name);
 
 // ----------------screen2-----------------------------------
 const go = document.getElementById("goName");
@@ -46,25 +60,40 @@ go.addEventListener("click", (event) => {
   });
   document.getElementById("cardCharacter").innerHTML = allCharacters;
 });
-// -------funcion para mostrar los estados segun lo seleccionado
+// -------funcion para mostrar los estados segun lo seleccionado------
 const status = document.getElementById("status");
-let statusValue = "";
 const origin = document.getElementById("origin");
+const species = document.getElementById("species");
+
 origin.addEventListener("change", () => {
-  limpiar();
+  clean(status, species);
+});
+// ----------ver los estados
+const listLookNames = document.getElementById("listAsSelected");
+status.addEventListener("change", (event) => {
+  clean(origin, species);
+  let statusValue = event.target.value;
+  let finalQuestStatus = charactersStatus(statusValue, allInfo); //todos lo personajes correscondiente al valor
+  listLookNames.innerHTML = lookSelector(statusValue, finalQuestStatus);
+
+  // finalQuestStatus.forEach((character) => {
+  //   listCharacter += `<ul>
+  //     <li>Name: ${character.name} </li>
+  //   </ul>`;
+  // });
 });
 
-status.addEventListener("change", () => {
-  statusValue = status.value;
-  console.log(status.options.selectedIndex);
-  console.log(statusValue);
-});
+/* <h3 id="title"></h3>
+<ul>
+  <li></li>
+</ul> */
 
-const limpiar = () => {
-  status.value = status.options[0].value;
-};
+// al seleccionar un estado debemos tomar el valor
+// nos traemos los elementos que tienen la propiedad correspondiente al valor
+// se crean las plantillas (imahen, nombre)
+// los mostramos
 
-// ------------------------------funcion que crea cada tarjeta
+// ------------------------------funcion que crea cada tarjeta-------
 const createNewCard = (info) => {
   let { id, image, name, species, status, gender, origin, episode } = info;
   console.log(episode); // lo trae como un array con objetos, cada objeto es 1 episodio
