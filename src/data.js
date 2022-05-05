@@ -34,10 +34,23 @@ export const clean = (sel1, sel2) => {
 };
 
 export const lookSelector = (statusSelect, characters) => {
+  const namesAndStatus = characters.map((character) => character.name);
+  namesAndStatus.sort();
   let listCharacter = `<h3>${statusSelect}</h3><ul>`;
-  characters.forEach((character) => {
-    listCharacter += `<li>${character.name}</li>`;
+  namesAndStatus.forEach((character) => {
+    listCharacter += `<li>${character}</li>`;
   });
   listCharacter += `</ul>`;
   return listCharacter;
 };
+
+// export const allStatus = (allInfo) => {
+//   const infoAllStatus = allInfo.map((i) => i.status);
+//   let onlyStatus = [];
+//   infoAllStatus.forEach((element) => {
+//     if (!onlyStatus.includes(element)) {
+//       onlyStatus.push(element);
+//     }
+//   });
+//   return onlyStatus;
+// };
