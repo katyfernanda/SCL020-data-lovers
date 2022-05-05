@@ -69,12 +69,15 @@ origin.addEventListener("change", () => {
   clean(status, species);
 });
 // ----------ver los estados
-const listLookNames = document.getElementById("listAsSelected");
+
 status.addEventListener("change", (event) => {
   clean(origin, species);
   let statusValue = event.target.value;
   let finalQuestStatus = charactersStatus(statusValue, allInfo); //todos lo personajes correscondiente al valor
-  listLookNames.innerHTML = lookSelector(statusValue, finalQuestStatus);
+  document.getElementById("listAsSelected").innerHTML = lookSelector(
+    statusValue,
+    finalQuestStatus
+  );
 
   // finalQuestStatus.forEach((character) => {
   //   listCharacter += `<ul>
