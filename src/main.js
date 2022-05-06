@@ -2,12 +2,15 @@ import rickAndMortyData from "./data/rickandmorty/rickandmorty.js";
 import {
   filterData,
   allSpecies,
+  allPlanet,
   allStatus,  
   characterSpecies,
+  characterPlanet,
   charactersStatus,  
   clean,
   lookSelectSpecies,
-  lookSelector,
+  lookSelectPlanet,
+  lookSelectStatus,
 } from "./data.js";
 // import {example} from './data.js';
 const screen1 = document.getElementById("screen1");
@@ -40,6 +43,13 @@ btnYes.addEventListener("click", () => {
     );
   document.getElementById("selSpecies").innerHTML = optionSpecies;
   // ----selector por planeta de origen
+  const onlyPlanet = allPlanet(allInfo);
+  let optionPlanet = `<option value="nothing" disabled selected>Select Bu Planet</option>`;
+  onlyPlanet.forEach(
+    (planet) =>
+      (optionPlanet += `<option value= "${planet}">${planet}</option>`)
+  );
+  document.getElementById("origin").innerHTML = optionPlanet;
   // ----selector por estado
   const onlyStatus = allStatus(allInfo);
   let optionStatus = `<option value="nothing" disabled selected>Select by Status</option>`;
@@ -89,13 +99,23 @@ species.addEventListener("change",(event)=> {
     finalQuestSpecies
   );
 })
+// ----------Ver los Planetas
+  origin.addEventListener("change", (event) => {
+    clean(status,species);
+    let planetValue = event.target.value;
+    let finalQuestPlanet = characterPlanet (planetValue, allInfo);
+    document.getElementById("listAsSelected").innerHTML = lookSelectPlanet(
+      planetValue,
+      finalQuestPlanet
+    );
+  })
 // ----------ver los estados
 
 status.addEventListener("change", (event) => {
   clean(origin, species);
   let statusValue = event.target.value;
   let finalQuestStatus = charactersStatus(statusValue, allInfo); //todos lo personajes correscondiente al valor
-  document.getElementById("listAsSelected").innerHTML = lookSelector(
+  document.getElementById("listAsSelected").innerHTML = lookSelectStatus(
     statusValue,
     finalQuestStatus
   );

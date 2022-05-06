@@ -5,7 +5,6 @@ export const example = (papitas) => {
 // funcion que filtra por nombre
 export const filterData = (search, allInfo) => {
   let dataCharacterSelected = [];
-  console.log(search);
   dataCharacterSelected = allInfo.filter(
     (info) => info.name.toLocaleLowerCase() == search.toLocaleLowerCase()
   );
@@ -22,6 +21,17 @@ export const allSpecies = (allInfo) => {
   });
   return onlySpecies;
 }
+// funcion que trae los planetas no repetidos
+export const allPlanet = (allInfo) => {
+  const allInfoPlanet = allInfo.map((i) => i.origin.name);
+  let onlyPlanet = [];
+  allInfoPlanet.forEach((element) => {
+    if (!onlyPlanet.includes(element)) {
+      onlyPlanet.push(element);
+    }
+  });
+  return onlyPlanet;
+}
 // funcion que trae los estados no repetidos
 export const allStatus = (allInfo) => {
   const infoAllStatus = allInfo.map((i) => i.status);
@@ -35,15 +45,14 @@ export const allStatus = (allInfo) => {
 };
 // funcion que trae los datos segun la especie seleccionada
 export const characterSpecies = (speciesSelect, allInfo) => {
-  console.log(speciesSelect);
   let machtCharacters = allInfo.filter((info) => info.species == speciesSelect);
   return machtCharacters;
 };
 // funcion que trae los datos segun el planeta seleccionado
-// export const characterPlanet = (planetSelect, allinfo) => {
-//   let machtCharacters = allInfo.filter((info) => info.planet == planetSelect);
-//   console.log(machtCharacters);
-// };
+ export const characterPlanet = (planetSelect, allInfo) => {
+   let machtCharacters = allInfo.filter((i) => i.origin.name == planetSelect);
+   return machtCharacters;
+ };
 // funcion que me trae los datos segun el estado seleccionado
 export const charactersStatus = (statusSelect, allInfo) => {
   let machtCharacters = allInfo.filter((info) => info.status == statusSelect);
@@ -52,8 +61,9 @@ export const charactersStatus = (statusSelect, allInfo) => {
 // limpiar los select si eligen otro
  export const clean = (sel1, sel2) => {
    sel1.value = sel1.options[0].value;
-//   sel2.value = sel2.options[0].value;
+   sel2.value = sel2.options[0].value;
 };
+//funciones que me muestran los datos (en lista) segun el selector usado
  export const lookSelectSpecies = (speciesSelect, characters) => {
    const namesAndSpecies = characters.map((character) => character.name);
    namesAndSpecies.sort();
@@ -64,7 +74,17 @@ export const charactersStatus = (statusSelect, allInfo) => {
    listCharacter += `</ul>`;
   return listCharacter;
 };
-export const lookSelector = (statusSelect, characters) => {
+export const lookSelectPlanet = (planetSelect, characters) => {
+  const namesAndPlanet = characters.map((character) => character.name);
+  namesAndPlanet.sort();
+  let listCharacter = `<h3>${planetSelect}</h3><ul>`;
+  namesAndPlanet.forEach((character) => {
+    listCharacter += `<li>${character}</li>`;
+  });
+  listCharacter += `</ul>`;
+  return listCharacter;
+};
+export const lookSelectStatus = (statusSelect, characters) => {
   const namesAndStatus = characters.map((character) => character.name);
   namesAndStatus.sort();
   let listCharacter = `<h3>${statusSelect}</h3><ul>`;
