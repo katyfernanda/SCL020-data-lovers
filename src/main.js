@@ -1,9 +1,12 @@
 import rickAndMortyData from "./data/rickandmorty/rickandmorty.js";
 import {
-  allStatus,
   filterData,
-  charactersStatus,
+  allSpecies,
+  allStatus,  
+  characterSpecies,
+  charactersStatus,  
   clean,
+  lookSelectSpecies,
   lookSelector,
 } from "./data.js";
 // import {example} from './data.js';
@@ -29,6 +32,14 @@ btnYes.addEventListener("click", () => {
   screen1.style.display = "none";
   screen2.style.display = "block";
   // -----------al seleccionar yes se cargan los selectores
+  //----selector por Species
+  const onlySpecies = allSpecies(allInfo);
+  let optionSpecies = `<option value="nothing" disabled selected>Select by Species</option>`;
+  onlySpecies.forEach(
+      (species) => optionSpecies += `<option value= "${species}">${species}</option>`
+    );
+  document.getElementById("selSpecies").innerHTML = optionSpecies;
+  // ----selector por planeta de origen
   // ----selector por estado
   const onlyStatus = allStatus(allInfo);
   let optionStatus = `<option value="nothing" disabled selected>Select by Status</option>`;
@@ -63,11 +74,21 @@ go.addEventListener("click", (event) => {
 // -------funcion para mostrar los estados segun lo seleccionado------
 const status = document.getElementById("status");
 const origin = document.getElementById("origin");
-const species = document.getElementById("species");
+const species = document.getElementById("selSpecies");
 
 origin.addEventListener("change", () => {
   clean(status, species);
 });
+// --------ver los personajes en (listAsSelected) que corresponden a la especie seleccionada
+species.addEventListener("change",(event)=> {
+  clean(origin,status);
+  let speciesValue = event.target.value;
+  let finalQuestSpecies = characterSpecies(speciesValue, allInfo);
+  document.getElementById("listAsSelected").innerHTML = lookSelectSpecies(
+    speciesValue,
+    finalQuestSpecies
+  );
+})
 // ----------ver los estados
 
 status.addEventListener("change", (event) => {
@@ -78,24 +99,7 @@ status.addEventListener("change", (event) => {
     statusValue,
     finalQuestStatus
   );
-
-  // finalQuestStatus.forEach((character) => {
-  //   listCharacter += `<ul>
-  //     <li>Name: ${character.name} </li>
-  //   </ul>`;
-  // });
 });
-
-/* <h3 id="title"></h3>
-<ul>
-  <li></li>
-</ul> */
-
-// al seleccionar un estado debemos tomar el valor
-// nos traemos los elementos que tienen la propiedad correspondiente al valor
-// se crean las plantillas (imahen, nombre)
-// los mostramos
-
 // ------------------------------funcion que crea cada tarjeta-------
 const createNewCard = (info) => {
   let { id, image, name, species, status, gender, origin, episode } = info;
@@ -129,16 +133,3 @@ closed.addEventListener("click", (event) => {
   cardCharacter.innerHTML = "";
 });
 
-// solo si logramos terminar y queremos mostrar las coincidencias por cada keyup
-
-// input.addEventListener("keyup", (event)=> {
-//     inputValue += event.key;
-//     console.log(inputValue);
-//   let namesCoindence = [];
-//     for(let i = 0; i < names.length; i++){
-//         if(inputValue.includes(names[i]) ){
-//             if (!namesCoindence.includes(names[i]));
-//             namesCoindence.push(names[i]);
-//         }
-//     }
-// }
