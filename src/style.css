@@ -57,6 +57,3 @@ body {
     display: flex;
     flex-direction: row;
 }
-#messageError {
-    color: #9EFB07
-}
