@@ -2,12 +2,14 @@ import rickAndMortyData from "./data/rickandmorty/rickandmorty.js";
 import {
   filterData,
   allSpecies,
-  allStatus,  
+  allStatus,
   characterSpecies,
-  charactersStatus,  
+  charactersStatus,
   clean,
   lookSelectSpecies,
   lookSelector,
+  filterLetter,
+  createDataNames,
 } from "./data.js";
 // import {example} from './data.js';
 const screen1 = document.getElementById("screen1");
@@ -32,12 +34,15 @@ btnYes.addEventListener("click", () => {
   screen1.style.display = "none";
   screen2.style.display = "block";
   // -----------al seleccionar yes se cargan los selectores
-  //----selector por Species
+
+  //selector por Species
+
   const onlySpecies = allSpecies(allInfo);
   let optionSpecies = `<option value="nothing" disabled selected>Select by Species</option>`;
   onlySpecies.forEach(
-      (species) => optionSpecies += `<option value= "${species}">${species}</option>`
-    );
+    (species) =>
+      (optionSpecies += `<option value= "${species}">${species}</option>`)
+  );
   document.getElementById("selSpecies").innerHTML = optionSpecies;
   // ----selector por planeta de origen
   // ----selector por estado
@@ -53,23 +58,34 @@ btnYes.addEventListener("click", () => {
 // ----------------screen2-----------------------------------
 const go = document.getElementById("goName");
 const closed = document.getElementById("closed");
-const textError = document.getElementById("textError");
+const messageError = document.getElementById("messageError");
 const searchByName = document.getElementById("searchByName");
+const lookDataNames = document.getElementById("lookDataNames");
 
-let dataCharacterSelected = []; //3 personajes con mismo nombre
+let dataCharacterSelected = [];
+searchByName.addEventListener("input", () => {
+  let letterKeyUp = searchByName.value;
+  let names = filterLetter(letterKeyUp, allInfo);
+  lookDataNames.innerHTML = createDataNames(names);
+});
 
 go.addEventListener("click", (event) => {
   event.preventDefault();
-  screen2.style.display = "none";
-  screenCard.style.display = "block";
+
   dataCharacterSelected = filterData(searchByName.value, allInfo);
   console.log(dataCharacterSelected);
-  let allCharacters = "";
-  dataCharacterSelected.forEach((character) => {
-    const newCard = createNewCard(character);
-    allCharacters += newCard;
-  });
-  document.getElementById("cardCharacter").innerHTML = allCharacters;
+  if (dataCharacterSelected.length === 0) {
+    messageError.innerHTML = "Name not found, try again";
+  } else {
+    screen2.style.display = "none";
+    screenCard.style.display = "block";
+    let allCharacters = "";
+    dataCharacterSelected.forEach((character) => {
+      const newCard = createNewCard(character);
+      allCharacters += newCard;
+    });
+    document.getElementById("cardCharacter").innerHTML = allCharacters;
+  }
 });
 // -------funcion para mostrar los estados segun lo seleccionado------
 const status = document.getElementById("status");
@@ -80,15 +96,15 @@ origin.addEventListener("change", () => {
   clean(status, species);
 });
 // --------ver los personajes en (listAsSelected) que corresponden a la especie seleccionada
-species.addEventListener("change",(event)=> {
-  clean(origin,status);
+species.addEventListener("change", (event) => {
+  clean(origin, status);
   let speciesValue = event.target.value;
   let finalQuestSpecies = characterSpecies(speciesValue, allInfo);
   document.getElementById("listAsSelected").innerHTML = lookSelectSpecies(
     speciesValue,
     finalQuestSpecies
   );
-})
+});
 // ----------ver los estados
 
 status.addEventListener("change", (event) => {
@@ -129,7 +145,6 @@ closed.addEventListener("click", (event) => {
   event.preventDefault();
   screen2.style.display = "block";
   screenCard.style.display = "none";
-  textError.style.display = "none";
+  messageError.style.display = "none";
   cardCharacter.innerHTML = "";
 });
-

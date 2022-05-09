@@ -2,7 +2,45 @@ export const example = (papitas) => {
   console.log(papitas);
 };
 
-// funcion que filtra por nombre
+const getNames = (allInfo) => {
+  const names = allInfo.map((i) => i.name);
+  let onlyNames = [];
+  names.forEach((name) => {
+    if (!onlyNames.includes(name)) {
+      onlyNames.push(name);
+    }
+  });
+  return onlyNames;
+};
+
+// funcion que filtra por nombre segun lo escrito
+export const filterLetter = (search, allInfo) => {
+  let dataCharacterSelected = [];
+  const names = getNames(allInfo);
+  names.forEach((name) => {
+    if (
+      name.toLocaleLowerCase().indexOf(`${search}`.toLocaleLowerCase(), 0) == 0
+    ) {
+      dataCharacterSelected.push(name);
+    }
+  });
+  dataCharacterSelected.sort();
+  return dataCharacterSelected;
+};
+
+export const createDataNames = (names) => {
+  let dataNames = `<datalist id="dataNames">`;
+  names.forEach(
+    (name) => (dataNames += `<option value="${name}">${name}</option>`)
+  );
+  dataNames += `</datalist>`;
+  return dataNames;
+};
+
+// iterrar la info, traer todos los nombres no repetidos
+// si coincide la cadena en infoname de manera ordenada con el search
+// guardo el objeto
+
 export const filterData = (search, allInfo) => {
   let dataCharacterSelected = [];
   console.log(search);
@@ -21,7 +59,7 @@ export const allSpecies = (allInfo) => {
     }
   });
   return onlySpecies;
-}
+};
 // funcion que trae los estados no repetidos
 export const allStatus = (allInfo) => {
   const infoAllStatus = allInfo.map((i) => i.status);
@@ -50,18 +88,18 @@ export const charactersStatus = (statusSelect, allInfo) => {
   return machtCharacters;
 };
 // limpiar los select si eligen otro
- export const clean = (sel1, sel2) => {
-   sel1.value = sel1.options[0].value;
-//   sel2.value = sel2.options[0].value;
+export const clean = (sel1, sel2) => {
+  sel1.value = sel1.options[0].value;
+  sel2.value = sel2.options[0].value;
 };
- export const lookSelectSpecies = (speciesSelect, characters) => {
-   const namesAndSpecies = characters.map((character) => character.name);
-   namesAndSpecies.sort();
-   let listCharacter = `<h3>${speciesSelect}</h3><ul>`;
-   namesAndSpecies.forEach((character) => {
-     listCharacter += `<li>${character}</li>`;
-   });
-   listCharacter += `</ul>`;
+export const lookSelectSpecies = (speciesSelect, characters) => {
+  const namesAndSpecies = characters.map((character) => character.name);
+  namesAndSpecies.sort();
+  let listCharacter = `<h3>${speciesSelect}</h3><ul>`;
+  namesAndSpecies.forEach((character) => {
+    listCharacter += `<li>${character}</li>`;
+  });
+  listCharacter += `</ul>`;
   return listCharacter;
 };
 export const lookSelector = (statusSelect, characters) => {
