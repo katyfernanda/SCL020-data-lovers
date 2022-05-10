@@ -58,6 +58,7 @@ export const allSpecies = (allInfo) => {
       onlySpecies.push(element);
     }
   });
+  onlySpecies.sort();
   return onlySpecies;
 };
 // funcion que trae los estados no repetidos
@@ -69,7 +70,20 @@ export const allStatus = (allInfo) => {
       onlyStatus.push(element);
     }
   });
+  onlyStatus.sort();
   return onlyStatus;
+};
+//funcion que trae los planetas de origen no repetidos
+export const allOrigin = (allInfo) => {
+  const infoAllOrigin = allInfo.map((i) => i.origin.name);
+  let onlyOrigin = [];
+  infoAllOrigin.forEach((element) => {
+    if (!onlyOrigin.includes(element)) {
+      onlyOrigin.push(element);
+    }
+  });
+  onlyOrigin.sort();
+  return onlyOrigin;
 };
 // funcion que trae los datos segun la especie seleccionada
 export const characterSpecies = (speciesSelect, allInfo) => {
@@ -78,10 +92,12 @@ export const characterSpecies = (speciesSelect, allInfo) => {
   return machtCharacters;
 };
 // funcion que trae los datos segun el planeta seleccionado
-// export const characterPlanet = (planetSelect, allinfo) => {
-//   let machtCharacters = allInfo.filter((info) => info.planet == planetSelect);
-//   console.log(machtCharacters);
-// };
+export const characterOrigin = (planetSelect, allInfo) => {
+  let machtCharacters = allInfo.filter(
+    (info) => info.origin.name == planetSelect
+  );
+  return machtCharacters;
+};
 // funcion que me trae los datos segun el estado seleccionado
 export const charactersStatus = (statusSelect, allInfo) => {
   let machtCharacters = allInfo.filter((info) => info.status == statusSelect);
@@ -92,6 +108,7 @@ export const clean = (sel1, sel2) => {
   sel1.value = sel1.options[0].value;
   sel2.value = sel2.options[0].value;
 };
+//mostrando nonbres segun lo seleccionado
 export const lookSelectSpecies = (speciesSelect, characters) => {
   const namesAndSpecies = characters.map((character) => character.name);
   namesAndSpecies.sort();
@@ -102,11 +119,21 @@ export const lookSelectSpecies = (speciesSelect, characters) => {
   listCharacter += `</ul>`;
   return listCharacter;
 };
-export const lookSelector = (statusSelect, characters) => {
+export const lookSelectorStatus = (statusSelect, characters) => {
   const namesAndStatus = characters.map((character) => character.name);
   namesAndStatus.sort();
   let listCharacter = `<h3>${statusSelect}</h3><ul>`;
   namesAndStatus.forEach((character) => {
+    listCharacter += `<li>${character}</li>`;
+  });
+  listCharacter += `</ul>`;
+  return listCharacter;
+};
+export const lookSelectorOrigin = (originSelect, characters) => {
+  const namesAndOrigin = characters.map((character) => character.name);
+  namesAndOrigin.sort();
+  let listCharacter = `<h3>${originSelect}</h3><ul>`;
+  namesAndOrigin.forEach((character) => {
     listCharacter += `<li>${character}</li>`;
   });
   listCharacter += `</ul>`;
