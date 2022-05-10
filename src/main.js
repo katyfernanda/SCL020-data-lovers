@@ -2,15 +2,17 @@ import rickAndMortyData from "./data/rickandmorty/rickandmorty.js";
 import {
   filterData,
   allSpecies,
-  allPlanet,
-  allStatus,  
+  allStatus,
+  allOrigin,
   characterSpecies,
-  characterPlanet,
-  charactersStatus,  
+  charactersStatus,
+  characterOrigin,
   clean,
   lookSelectSpecies,
-  lookSelectPlanet,
-  lookSelectStatus,
+  lookSelectorOrigin,
+  lookSelectorStatus,
+  filterLetter,
+  createDataNames,
 } from "./data.js";
 // import {example} from './data.js';
 const screen1 = document.getElementById("screen1");
@@ -35,21 +37,25 @@ btnYes.addEventListener("click", () => {
   screen1.style.display = "none";
   screen2.style.display = "block";
   // -----------al seleccionar yes se cargan los selectores
-  //----selector por Species
+  //selector por Species
+
   const onlySpecies = allSpecies(allInfo);
   let optionSpecies = `<option value="nothing" disabled selected>Select by Species</option>`;
   onlySpecies.forEach(
-      (species) => optionSpecies += `<option value= "${species}">${species}</option>`
-    );
+    (species) =>
+      (optionSpecies += `<option value= "${species}">${species}</option>`)
+  );
   document.getElementById("selSpecies").innerHTML = optionSpecies;
   // ----selector por planeta de origen
-  const onlyPlanet = allPlanet(allInfo);
-  let optionPlanet = `<option value="nothing" disabled selected>Select Bu Planet</option>`;
-  onlyPlanet.forEach(
-    (planet) =>
-      (optionPlanet += `<option value= "${planet}">${planet}</option>`)
+  const onlyOrigin = allOrigin(allInfo);
+  console.log(onlyOrigin);
+  let optionOrigin = `<option value="nothing" disabled selected>Select by Planet Origin</option>`;
+  onlyOrigin.forEach(
+    (origin) =>
+      (optionOrigin += `<option value= "${origin}">${origin}</option>`)
   );
-  document.getElementById("origin").innerHTML = optionPlanet;
+  document.getElementById("selOrigin").innerHTML = optionOrigin;
+
   // ----selector por estado
   const onlyStatus = allStatus(allInfo);
   let optionStatus = `<option value="nothing" disabled selected>Select by Status</option>`;
@@ -63,59 +69,67 @@ btnYes.addEventListener("click", () => {
 // ----------------screen2-----------------------------------
 const go = document.getElementById("goName");
 const closed = document.getElementById("closed");
-const textError = document.getElementById("textError");
+const messageError = document.getElementById("messageError");
 const searchByName = document.getElementById("searchByName");
+const lookDataNames = document.getElementById("lookDataNames");
 
-let dataCharacterSelected = []; //3 personajes con mismo nombre
+let dataCharacterSelected = [];
+searchByName.addEventListener("input", () => {
+  let letterKeyUp = searchByName.value;
+  let names = filterLetter(letterKeyUp, allInfo);
+  lookDataNames.innerHTML = createDataNames(names);
+});
 
 go.addEventListener("click", (event) => {
   event.preventDefault();
-  screen2.style.display = "none";
-  screenCard.style.display = "block";
+
   dataCharacterSelected = filterData(searchByName.value, allInfo);
   console.log(dataCharacterSelected);
-  let allCharacters = "";
-  dataCharacterSelected.forEach((character) => {
-    const newCard = createNewCard(character);
-    allCharacters += newCard;
-  });
-  document.getElementById("cardCharacter").innerHTML = allCharacters;
+  if (dataCharacterSelected.length === 0) {
+    messageError.innerHTML = "Name not found, try again";
+  } else {
+    screen2.style.display = "none";
+    screenCard.style.display = "block";
+    let allCharacters = "";
+    dataCharacterSelected.forEach((character) => {
+      const newCard = createNewCard(character);
+      allCharacters += newCard;
+    });
+    document.getElementById("cardCharacter").innerHTML = allCharacters;
+  }
 });
-// -------funcion para mostrar los estados segun lo seleccionado------
-const status = document.getElementById("status");
-const origin = document.getElementById("origin");
-const species = document.getElementById("selSpecies");
 
-origin.addEventListener("change", () => {
+const status = document.getElementById("status");
+const origin = document.getElementById("selOrigin");
+const species = document.getElementById("selSpecies");
+// -------ver los personajes en (listAsSelected) que corresponden al planeta de origen seleccionada
+origin.addEventListener("change", (event) => {
   clean(status, species);
+  let originValue = event.target.value;
+  console.log(originValue);
+  let finalQuestOrigin = characterOrigin(originValue, allInfo);
+  document.getElementById("listAsSelected").innerHTML = lookSelectorOrigin(
+    originValue,
+    finalQuestOrigin
+  );
 });
 // --------ver los personajes en (listAsSelected) que corresponden a la especie seleccionada
-species.addEventListener("change",(event)=> {
-  clean(origin,status);
+species.addEventListener("change", (event) => {
+  clean(origin, status);
   let speciesValue = event.target.value;
   let finalQuestSpecies = characterSpecies(speciesValue, allInfo);
   document.getElementById("listAsSelected").innerHTML = lookSelectSpecies(
     speciesValue,
     finalQuestSpecies
   );
-})
-// ----------Ver los Planetas
-  origin.addEventListener("change", (event) => {
-    clean(status,species);
-    let planetValue = event.target.value;
-    let finalQuestPlanet = characterPlanet (planetValue, allInfo);
-    document.getElementById("listAsSelected").innerHTML = lookSelectPlanet(
-      planetValue,
-      finalQuestPlanet
-    );
-  })
+});
 // ----------ver los estados
 
 status.addEventListener("change", (event) => {
   clean(origin, species);
   let statusValue = event.target.value;
   let finalQuestStatus = charactersStatus(statusValue, allInfo); //todos lo personajes correscondiente al valor
-  document.getElementById("listAsSelected").innerHTML = lookSelectStatus(
+  document.getElementById("listAsSelected").innerHTML = lookSelectorStatus(
     statusValue,
     finalQuestStatus
   );
@@ -149,7 +163,6 @@ closed.addEventListener("click", (event) => {
   event.preventDefault();
   screen2.style.display = "block";
   screenCard.style.display = "none";
-  textError.style.display = "none";
+  messageError.style.display = "none";
   cardCharacter.innerHTML = "";
 });
-

@@ -40,11 +40,18 @@
         <!---------------- Search by name ---------->
         <form id="formByName">
           <label for="searchByName">Search by Name</label>
-          <input id="searchByName" name="searchByName" type="text" />
+          <input
+            list="dataNames"
+            id="searchByName"
+            name="searchByName"
+            type="text"
+            autocomplete="off"
+          />
+          <div id="lookDataNames"></div>
           <button id="goName">Go</button>
         </form>
         <div>
-          <p id="textError"></p>
+          <p id="messageError"></p>
         </div>
         <div id="allSelectors">
           <!--------------- Selector by Species ---------->
@@ -57,7 +64,7 @@
           <!--------------- Selector by Planet ---------->
           <div id="selectorOrigin">
             <p>Planet</p>
-            <select name="selectors" id="origin">
+            <select name="selectors" id="selOrigin">
               <option disabled selected>Select by Planet of Origin</option>
             </select>
           </div>
