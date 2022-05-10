@@ -4,10 +4,11 @@ body {
     flex-direction: column;
     align-items: center;
     background-image: url("image/background.png");
-    background-size: 100% 100%;
+    background-size: 100% 115%;
     background-attachment: fixed;
     color: white;
     font-family: "Segoe UI";
+    font-size: x-large;
 }
 #filterByAge {
     display: flex;
@@ -22,6 +23,10 @@ body {
 }
 #questionTwo {
     font-size: x-large;
+}
+#buttons {
+    display: flex;
+    justify-content: center;
 }
 #yes {
     width: 100px;
@@ -53,10 +58,116 @@ body {
     font-family: "Segoe UI";
     font-size: large;
 }
-#allSelectors {
+/* -- Estilos de la segunda vista index.html --*/
+#welcome {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
+    flex-direction: column;
+    font-weight: bold;
+    letter-spacing: 0.25em;
+}
+#welcomeText {
+    display: flex;
+    justify-content: center;
+    font-size: xxx-large;
+}
+#information {
+    display: flex;
+    justify-content: center;
+    font-size: x-large;
+}
+/* -- Estilos de la busqueda por nombre --*/
+#formByName {
+    display: flex;
+    justify-content: center;
+    width: 800px;
+
+}
+#searchByName {
+    background-color: #057f8f;
+    width: 250px;
+    height: 20px;
+    margin-left: 150px;
+    border-radius: 5px;
+    border-color: #9EFB07;
+    color: white;
+    font-weight: bolder;
+    width: 250px;
+    height: 40px;
+    font-size: large;
+    letter-spacing: 0.25em;
+}
+#goName {
+    background-color: #08B2C9;
+    width: 50px;
+    margin-left: 80px;
+    color: #9EFB07;
+    font-weight: bolder;
+    font-size: large;
+    letter-spacing: 0.25em;
+    border-color: #9EFB07;
+    border-radius: 5px;
 }
 #messageError {
-    color: #9EFB07
+    color: #9EFB07;
+    font-weight: bolder;
+    letter-spacing: 0.25em;
 }
+/* -- Estilos de los selectores --*/
+#allSelectors {
+    display: flex;
+    justify-content: space-around;
+    font-weight: bold;
+    letter-spacing: 0.25em;
+    font-size: large;
+    width: 900px;
+}
+.selectorContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: x-large;
+}
+.selectors {
+    background-color:#057f8f;
+    border-color: #9EFB07;
+    color: white;
+    border-radius: 5px;
+    width: 250px;
+    height: 40px;
+    font-size: medium;
+    letter-spacing: 0.25em;
+}
+/* -- Estilos del listado (resultado de selectores) --*/
+#listAsSelected {  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    letter-spacing: 0.15em;
+    margin-top: 40px;
+}
+/* -- Estilos del footer --*/
+footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+    width: 900px;
+    font-size: medium;
+}
+#linkGame {
+    color: black;
+    font-weight: bolder;
+    text-shadow: 0 0 3px #9EFB07;
+    text-decoration: underline;
+    letter-spacing: 0.15em;
+}
+#socialMedia img {
+    width: 40px;
+    margin-top: 10px;
+}
+#facebook {
+    max-width: 35px;
+    margin: 0 0 3px 0;
+}
+
+

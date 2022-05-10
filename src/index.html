@@ -32,14 +32,12 @@
       <!--------------------------- screen2 ----------------------------Selectors---------------->
       <div id="screen2" class="shade">
         <div id="welcome">
-          <p id="welcome">Welcome</p>
-          <p id="information">
-            You can see information of adult animated science fiction sitcom
-          </p>
+          <p id="welcomeText">Welcome</p>
+          <p id="information">You can search for name:</p>
         </div>
         <!---------------- Search by name ---------->
         <form id="formByName">
-          <label for="searchByName">Search by Name</label>
+          <!-- <label for="searchByName">Search by Name</label> -->
           <input
             list="dataNames"
             id="searchByName"
@@ -55,23 +53,23 @@
         </div>
         <div id="allSelectors">
           <!--------------- Selector by Species ---------->
-          <div id="selectorSpecies">
+          <div class="selectorContainer" id="selectorSpecies">
             <p>Species</p>
-            <select name="selectors" id="selSpecies">
+            <select class="selectors" name="selectors" id="selSpecies">
               <option disabled selected>Select by Species</option>
             </select>
           </div>
           <!--------------- Selector by Planet ---------->
-          <div id="selectorOrigin">
+          <div class="selectorContainer" id="selectorOrigin">
             <p>Planet</p>
-            <select name="selectors" id="selOrigin">
+            <select class="selectors" name="selectors" id="selOrigin">
               <option disabled selected>Select by Planet of Origin</option>
             </select>
           </div>
           <!--------------- Selector by Status ---------->
-          <div id="selectorStatus">
+          <div class="selectorContainer" id="selectorStatus">
             <p>Status</p>
-            <select name="selectors" id="status">
+            <select class="selectors" name="selectors" id="status">
               <option disabled selected>Select by Status</option>
             </select>
           </div>
@@ -91,6 +89,15 @@
         </div>
       </div>
     </main>
+    <footer>
+      <div id="linkGame">
+        <p>GET IT NOW! POCKET MORTYS, GO TO PLAY</p>
+      </div>
+      <div id="socialMedia">
+        <img id ="facebook" src="https://github.com/camicamposc/SCL020-data-lovers/blob/main/src/image/Facebook.png?raw=true">
+        <img id = "instagram"src="https://github.com/camicamposc/SCL020-data-lovers/blob/main/src/image/Instagram.png?raw=true">
+      </div>
+    </footer> 
     <script src="main.js" type="module"></script>
   </body>
 </html>
