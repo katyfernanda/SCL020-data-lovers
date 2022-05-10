@@ -3,11 +3,14 @@ import {
   filterData,
   allSpecies,
   allStatus,
+  allOrigin,
   characterSpecies,
   charactersStatus,
+  characterOrigin,
   clean,
   lookSelectSpecies,
-  lookSelector,
+  lookSelectorOrigin,
+  lookSelectorStatus,
   filterLetter,
   createDataNames,
 } from "./data.js";
@@ -34,7 +37,6 @@ btnYes.addEventListener("click", () => {
   screen1.style.display = "none";
   screen2.style.display = "block";
   // -----------al seleccionar yes se cargan los selectores
-
   //selector por Species
 
   const onlySpecies = allSpecies(allInfo);
@@ -45,6 +47,15 @@ btnYes.addEventListener("click", () => {
   );
   document.getElementById("selSpecies").innerHTML = optionSpecies;
   // ----selector por planeta de origen
+  const onlyOrigin = allOrigin(allInfo);
+  console.log(onlyOrigin);
+  let optionOrigin = `<option value="nothing" disabled selected>Select by Planet Origin</option>`;
+  onlyOrigin.forEach(
+    (origin) =>
+      (optionOrigin += `<option value= "${origin}">${origin}</option>`)
+  );
+  document.getElementById("selOrigin").innerHTML = optionOrigin;
+
   // ----selector por estado
   const onlyStatus = allStatus(allInfo);
   let optionStatus = `<option value="nothing" disabled selected>Select by Status</option>`;
@@ -87,13 +98,20 @@ go.addEventListener("click", (event) => {
     document.getElementById("cardCharacter").innerHTML = allCharacters;
   }
 });
-// -------funcion para mostrar los estados segun lo seleccionado------
-const status = document.getElementById("status");
-const origin = document.getElementById("origin");
-const species = document.getElementById("selSpecies");
 
-origin.addEventListener("change", () => {
+const status = document.getElementById("status");
+const origin = document.getElementById("selOrigin");
+const species = document.getElementById("selSpecies");
+// -------ver los personajes en (listAsSelected) que corresponden al planeta de origen seleccionada
+origin.addEventListener("change", (event) => {
   clean(status, species);
+  let originValue = event.target.value;
+  console.log(originValue);
+  let finalQuestOrigin = characterOrigin(originValue, allInfo);
+  document.getElementById("listAsSelected").innerHTML = lookSelectorOrigin(
+    originValue,
+    finalQuestOrigin
+  );
 });
 // --------ver los personajes en (listAsSelected) que corresponden a la especie seleccionada
 species.addEventListener("change", (event) => {
@@ -111,7 +129,7 @@ status.addEventListener("change", (event) => {
   clean(origin, species);
   let statusValue = event.target.value;
   let finalQuestStatus = charactersStatus(statusValue, allInfo); //todos lo personajes correscondiente al valor
-  document.getElementById("listAsSelected").innerHTML = lookSelector(
+  document.getElementById("listAsSelected").innerHTML = lookSelectorStatus(
     statusValue,
     finalQuestStatus
   );
