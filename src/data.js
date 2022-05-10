@@ -43,7 +43,6 @@ export const createDataNames = (names) => {
 
 export const filterData = (search, allInfo) => {
   let dataCharacterSelected = [];
-  console.log(search);
   dataCharacterSelected = allInfo.filter(
     (info) => info.name.toLocaleLowerCase() == search.toLocaleLowerCase()
   );
@@ -87,7 +86,6 @@ export const allOrigin = (allInfo) => {
 };
 // funcion que trae los datos segun la especie seleccionada
 export const characterSpecies = (speciesSelect, allInfo) => {
-  console.log(speciesSelect);
   let machtCharacters = allInfo.filter((info) => info.species == speciesSelect);
   return machtCharacters;
 };
