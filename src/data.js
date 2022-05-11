@@ -105,14 +105,16 @@ export const charactersStatus = (statusSelect, allInfo) => {
 export const clean = (sel1, sel2) => {
   sel1.value = sel1.options[0].value;
   sel2.value = sel2.options[0].value;
-};
-//mostrando nonbres segun lo seleccionado
+}; //se va al dom
+//mostrando nonbres segun lo seleccionado---se le puede hacer click a los nombres, se muestra la tarjeta
 export const lookSelectSpecies = (speciesSelect, characters) => {
   const namesAndSpecies = characters.map((character) => character.name);
   namesAndSpecies.sort();
-  let listCharacter = `<h3>${speciesSelect}</h3><ul>`;
+  let listCharacter = `<div>
+  <button id="closeList">X</button>
+</div><h3>${speciesSelect}</h3><ul>`;
   namesAndSpecies.forEach((character) => {
-    listCharacter += `<li>${character}</li>`;
+    listCharacter += `<li class="namesSelector" name="${character}">${character}</li>`;
   });
   listCharacter += `</ul>`;
   return listCharacter;
@@ -120,9 +122,9 @@ export const lookSelectSpecies = (speciesSelect, characters) => {
 export const lookSelectorStatus = (statusSelect, characters) => {
   const namesAndStatus = characters.map((character) => character.name);
   namesAndStatus.sort();
-  let listCharacter = `<h3>${statusSelect}</h3><ul>`;
+  let listCharacter = `<button id="closeList">X</button><h3>${statusSelect}</h3><ul>`;
   namesAndStatus.forEach((character) => {
-    listCharacter += `<li>${character}</li>`;
+    listCharacter += `<li class="namesSelector" name="${character}">${character}</li>`;
   });
   listCharacter += `</ul>`;
   return listCharacter;
@@ -130,9 +132,9 @@ export const lookSelectorStatus = (statusSelect, characters) => {
 export const lookSelectorOrigin = (originSelect, characters) => {
   const namesAndOrigin = characters.map((character) => character.name);
   namesAndOrigin.sort();
-  let listCharacter = `<h3>${originSelect}</h3><ul>`;
+  let listCharacter = `<button id="closeList">X</button><h3>${originSelect}</h3><ul>`;
   namesAndOrigin.forEach((character) => {
-    listCharacter += `<li>${character}</li>`;
+    listCharacter += `<li class="namesSelector" name="${character}">${character}</li>`;
   });
   listCharacter += `</ul>`;
   return listCharacter;

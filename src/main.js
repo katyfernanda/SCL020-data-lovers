@@ -20,8 +20,10 @@ const screen2 = document.getElementById("screen2");
 const screenCard = document.getElementById("screenCard");
 const cardCharacter = document.getElementById("cardCharacter");
 const containerStatus = document.getElementById("status");
+const listAsSelected = document.getElementById("listAsSelected");
 screen2.style.display = "none";
 screenCard.style.display = "none";
+listAsSelected.style.display = "none";
 
 const allInfo = rickAndMortyData.results;
 
@@ -40,6 +42,7 @@ btnYes.addEventListener("click", () => {
   //selector por Species
 
   const onlySpecies = allSpecies(allInfo);
+
   let optionSpecies = `<option value="nothing" disabled selected>Select by Species</option>`;
   onlySpecies.forEach(
     (species) =>
@@ -48,7 +51,6 @@ btnYes.addEventListener("click", () => {
   document.getElementById("selSpecies").innerHTML = optionSpecies;
   // ----selector por planeta de origen
   const onlyOrigin = allOrigin(allInfo);
-  console.log(onlyOrigin);
   let optionOrigin = `<option value="nothing" disabled selected>Select by Planet Origin</option>`;
   onlyOrigin.forEach(
     (origin) =>
@@ -82,7 +84,8 @@ searchByName.addEventListener("input", () => {
 
 go.addEventListener("click", (event) => {
   event.preventDefault();
-
+  listAsSelected.innerHTML = "";
+  resetSelects();
   dataCharacterSelected = filterData(searchByName.value, allInfo);
   console.log(dataCharacterSelected);
   if (dataCharacterSelected.length === 0) {
@@ -112,6 +115,12 @@ origin.addEventListener("change", (event) => {
     originValue,
     finalQuestOrigin
   );
+  let closeList = document.getElementById("closeList");
+  // -------list of characters "links"---------
+  let namesSelector = document.getElementsByClassName("namesSelector");
+  innerDataAndCard(namesSelector);
+  listAsSelected.style.display = "block";
+  eraseList(closeList);
 });
 // --------ver los personajes en (listAsSelected) que corresponden a la especie seleccionada
 species.addEventListener("change", (event) => {
@@ -122,6 +131,12 @@ species.addEventListener("change", (event) => {
     speciesValue,
     finalQuestSpecies
   );
+  let closeList = document.getElementById("closeList");
+  // -------list of characters "links"---------
+  let namesSelector = document.getElementsByClassName("namesSelector");
+  innerDataAndCard(namesSelector);
+  listAsSelected.style.display = "block";
+  eraseList(closeList);
 });
 // ----------ver los estados
 
@@ -133,7 +148,14 @@ status.addEventListener("change", (event) => {
     statusValue,
     finalQuestStatus
   );
+  let closeList = document.getElementById("closeList");
+  // -------list of characters "links"---------
+  let namesSelector = document.getElementsByClassName("namesSelector");
+  innerDataAndCard(namesSelector);
+  listAsSelected.style.display = "block";
+  eraseList(closeList);
 });
+
 // ------------------------------funcion que crea cada tarjeta-------
 const createNewCard = (info) => {
   let { id, image, name, species, status, gender, origin, episode } = info;
@@ -165,4 +187,36 @@ closed.addEventListener("click", (event) => {
   screenCard.style.display = "none";
   messageError.style.display = "none";
   cardCharacter.innerHTML = "";
+  resetSelects();
 });
+//reset valueSelect
+const resetSelects = () => {
+  status.value = status.options[0].value;
+  origin.value = origin.options[0].value;
+  species.value = species.options[0].value;
+};
+// button eraseList
+const eraseList = (button) =>
+  button.addEventListener("click", () => {
+    listAsSelected.innerHTML = "";
+    resetSelects();
+  });
+// list of characters "links" and create card
+let innerDataAndCard = (namesSelector) => {
+  for (let i = 0; i < namesSelector.length; i++) {
+    let name = namesSelector[i];
+    name.addEventListener("click", () => {
+      dataCharacterSelected = filterData(name.textContent, allInfo);
+      console.log(dataCharacterSelected);
+      screen2.style.display = "none";
+      screenCard.style.display = "block";
+      listAsSelected.style.display = "none";
+      let allCharacters = "";
+      dataCharacterSelected.forEach((character) => {
+        const newCard = createNewCard(character);
+        allCharacters += newCard;
+      });
+      document.getElementById("cardCharacter").innerHTML = allCharacters;
+    });
+  }
+};
