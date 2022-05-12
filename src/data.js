@@ -13,7 +13,7 @@ const getNames = (allInfo) => {
   return onlyNames;
 };
 
-// funcion que filtra por nombre segun lo escrito
+// referencia de nombre segun lo escrito
 export const filterLetter = (search, allInfo) => {
   let dataCharacterSelected = [];
   const names = getNames(allInfo);
@@ -36,16 +36,22 @@ export const createDataNames = (names) => {
   dataNames += `</datalist>`;
   return dataNames;
 };
-
-// iterrar la info, traer todos los nombres no repetidos
-// si coincide la cadena en infoname de manera ordenada con el search
-// guardo el objeto
-
-export const filterData = (search, allInfo) => {
+// filterData por nombres o nombres y lo seleccionado
+export const filterData = (search, allInfo, filter) => {
   let dataCharacterSelected = [];
-  dataCharacterSelected = allInfo.filter(
-    (info) => info.name.toLocaleLowerCase() == search.toLocaleLowerCase()
-  );
+  if (filter) {
+    dataCharacterSelected = allInfo.filter(
+      (info) =>
+        info.name.toLocaleLowerCase() == search.toLocaleLowerCase() &&
+        (info.species == filter ||
+          info.status == filter ||
+          info.origin.name == filter)
+    );
+  } else {
+    dataCharacterSelected = allInfo.filter(
+      (info) => info.name.toLocaleLowerCase() == search.toLocaleLowerCase()
+    );
+  }
   return dataCharacterSelected;
 };
 // funcion que trae las especies no repetidas
@@ -84,58 +90,57 @@ export const allOrigin = (allInfo) => {
   onlyOrigin.sort();
   return onlyOrigin;
 };
-// funcion que trae los datos segun la especie seleccionada
-export const characterSpecies = (speciesSelect, allInfo) => {
-  let machtCharacters = allInfo.filter((info) => info.species == speciesSelect);
-  return machtCharacters;
-};
-// funcion que trae los datos segun el planeta seleccionado
-export const characterOrigin = (planetSelect, allInfo) => {
+// funcion que trae los personajes segun lo seleccionado
+export const selectCharacters = (select, allInfo) => {
   let machtCharacters = allInfo.filter(
-    (info) => info.origin.name == planetSelect
+    (info) =>
+      info.species == select ||
+      info.origin.name == select ||
+      info.status == select
   );
   return machtCharacters;
 };
-// funcion que me trae los datos segun el estado seleccionado
-export const charactersStatus = (statusSelect, allInfo) => {
-  let machtCharacters = allInfo.filter((info) => info.status == statusSelect);
-  return machtCharacters;
-};
-// limpiar los select si eligen otro
-export const clean = (sel1, sel2) => {
-  sel1.value = sel1.options[0].value;
-  sel2.value = sel2.options[0].value;
-}; //se va al dom
-//mostrando nonbres segun lo seleccionado---se le puede hacer click a los nombres, se muestra la tarjeta
-export const lookSelectSpecies = (speciesSelect, characters) => {
-  const namesAndSpecies = characters.map((character) => character.name);
-  namesAndSpecies.sort();
+
+//mostrando nonbres segun lo seleccionado---
+export const lookSelect = (select, characters) => {
+  const names = characters.map((character) => character.name);
+  names.sort();
   let listCharacter = `<div>
   <button id="closeList">X</button>
-</div><h3>${speciesSelect}</h3><ul>`;
-  namesAndSpecies.forEach((character) => {
+</div><h3>${select}</h3><ul>`;
+  names.forEach((character) => {
     listCharacter += `<li class="namesSelector" name="${character}">${character}</li>`;
   });
   listCharacter += `</ul>`;
   return listCharacter;
 };
-export const lookSelectorStatus = (statusSelect, characters) => {
-  const namesAndStatus = characters.map((character) => character.name);
-  namesAndStatus.sort();
-  let listCharacter = `<button id="closeList">X</button><h3>${statusSelect}</h3><ul>`;
-  namesAndStatus.forEach((character) => {
-    listCharacter += `<li class="namesSelector" name="${character}">${character}</li>`;
-  });
-  listCharacter += `</ul>`;
-  return listCharacter;
-};
-export const lookSelectorOrigin = (originSelect, characters) => {
-  const namesAndOrigin = characters.map((character) => character.name);
-  namesAndOrigin.sort();
-  let listCharacter = `<button id="closeList">X</button><h3>${originSelect}</h3><ul>`;
-  namesAndOrigin.forEach((character) => {
-    listCharacter += `<li class="namesSelector" name="${character}">${character}</li>`;
-  });
-  listCharacter += `</ul>`;
-  return listCharacter;
+
+// ------------------------------funcion que crea cada tarjeta-------
+export const createNewCard = (info) => {
+  let { id, image, name, species, status, gender, origin, episode } = info;
+  console.log(episode); // lo trae como un array con objetos, cada objeto es 1 episodio
+  let episodes = "";
+  episode.forEach(
+    (ep) =>
+      (episodes += `<li class="episodes">${ep.replace(
+        "https://rickandmortyapi.com/api/episode/",
+        ""
+      )}</li>`)
+  );
+  //text.replace("Microsoft", "W3Schools");
+  console.log(episodes);
+  const structureCard = `<div id="cardCharacter">
+    <div>
+    <img id="image-${id}" src="${image}">
+    </div>
+     <ul>
+        <li id="name-${id}">Name: ${name}</li>
+        <li id="status-${id}">Status: ${status}</li>
+        <li id="species-${id}">Specie: ${species}</li>
+        <li id="gender-${id}">Gender: ${gender}</li>
+        <li id="origin-${id}">Origin planet: ${origin.name}</li>
+        <li id="allEpisode">Episodes:<ul id="listEpisode">${episodes}</ul></li>
+     </ul>
+  </div>`;
+  return structureCard;
 };

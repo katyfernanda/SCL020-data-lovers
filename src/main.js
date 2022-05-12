@@ -4,15 +4,11 @@ import {
   allSpecies,
   allStatus,
   allOrigin,
-  characterSpecies,
-  charactersStatus,
-  characterOrigin,
-  clean,
-  lookSelectSpecies,
-  lookSelectorOrigin,
-  lookSelectorStatus,
+  selectCharacters,
+  lookSelect,
   filterLetter,
   createDataNames,
+  createNewCard,
 } from "./data.js";
 // import {example} from './data.js';
 const screen1 = document.getElementById("screen1");
@@ -87,7 +83,6 @@ go.addEventListener("click", (event) => {
   listAsSelected.innerHTML = "";
   resetSelects();
   dataCharacterSelected = filterData(searchByName.value, allInfo);
-  console.log(dataCharacterSelected);
   if (dataCharacterSelected.length === 0) {
     messageError.innerHTML = "Name not found, try again";
   } else {
@@ -109,16 +104,15 @@ const species = document.getElementById("selSpecies");
 origin.addEventListener("change", (event) => {
   clean(status, species);
   let originValue = event.target.value;
-  console.log(originValue);
-  let finalQuestOrigin = characterOrigin(originValue, allInfo);
-  document.getElementById("listAsSelected").innerHTML = lookSelectorOrigin(
+  let finalQuestOrigin = selectCharacters(originValue, allInfo);
+  document.getElementById("listAsSelected").innerHTML = lookSelect(
     originValue,
     finalQuestOrigin
   );
   let closeList = document.getElementById("closeList");
   // -------list of characters "links"---------
   let namesSelector = document.getElementsByClassName("namesSelector");
-  innerDataAndCard(namesSelector);
+  innerDataAndCard(namesSelector, originValue);
   listAsSelected.style.display = "block";
   eraseList(closeList);
 });
@@ -126,15 +120,15 @@ origin.addEventListener("change", (event) => {
 species.addEventListener("change", (event) => {
   clean(origin, status);
   let speciesValue = event.target.value;
-  let finalQuestSpecies = characterSpecies(speciesValue, allInfo);
-  document.getElementById("listAsSelected").innerHTML = lookSelectSpecies(
+  let finalQuestSpecies = selectCharacters(speciesValue, allInfo);
+  document.getElementById("listAsSelected").innerHTML = lookSelect(
     speciesValue,
     finalQuestSpecies
   );
   let closeList = document.getElementById("closeList");
   // -------list of characters "links"---------
   let namesSelector = document.getElementsByClassName("namesSelector");
-  innerDataAndCard(namesSelector);
+  innerDataAndCard(namesSelector, speciesValue);
   listAsSelected.style.display = "block";
   eraseList(closeList);
 });
@@ -143,41 +137,18 @@ species.addEventListener("change", (event) => {
 status.addEventListener("change", (event) => {
   clean(origin, species);
   let statusValue = event.target.value;
-  let finalQuestStatus = charactersStatus(statusValue, allInfo); //todos lo personajes correscondiente al valor
-  document.getElementById("listAsSelected").innerHTML = lookSelectorStatus(
+  let finalQuestStatus = selectCharacters(statusValue, allInfo); //todos lo personajes correscondiente al valor
+  document.getElementById("listAsSelected").innerHTML = lookSelect(
     statusValue,
     finalQuestStatus
   );
   let closeList = document.getElementById("closeList");
   // -------list of characters "links"---------
   let namesSelector = document.getElementsByClassName("namesSelector");
-  innerDataAndCard(namesSelector);
+  innerDataAndCard(namesSelector, statusValue);
   listAsSelected.style.display = "block";
   eraseList(closeList);
 });
-
-// ------------------------------funcion que crea cada tarjeta-------
-const createNewCard = (info) => {
-  let { id, image, name, species, status, gender, origin, episode } = info;
-  console.log(episode); // lo trae como un array con objetos, cada objeto es 1 episodio
-  let episodes = "";
-  episode.forEach((ep) => (episodes += `<li>${ep}</li>`));
-  console.log(episodes);
-  const structureCard = `<div id="cardCharacter">
-    <div>
-    <img id="image-${id}" src="${image}">
-    </div>
-     <ul>
-        <li id="name-${id}">Name: ${name}</li>
-        <li id="status-${id}">Status: ${status}</li>
-        <li id="species-${id}">Specie: ${species}</li>
-        <li id="gender-${id}">Gender: ${gender}</li>
-        <li id="origin-${id}">Origin planet: ${origin.name}</li>
-        <li id="allEpisode">Episodes:<ul id="listEpisode">${episodes}</ul></li>
-     </ul>
-  </div>`;
-  return structureCard;
-};
 
 // ------ close cardCharacter button----------
 
@@ -202,12 +173,11 @@ const eraseList = (button) =>
     resetSelects();
   });
 // list of characters "links" and create card
-let innerDataAndCard = (namesSelector) => {
+let innerDataAndCard = (namesSelector, value) => {
   for (let i = 0; i < namesSelector.length; i++) {
     let name = namesSelector[i];
     name.addEventListener("click", () => {
-      dataCharacterSelected = filterData(name.textContent, allInfo);
-      console.log(dataCharacterSelected);
+      dataCharacterSelected = filterData(name.textContent, allInfo, value);
       screen2.style.display = "none";
       screenCard.style.display = "block";
       listAsSelected.style.display = "none";
@@ -219,4 +189,9 @@ let innerDataAndCard = (namesSelector) => {
       document.getElementById("cardCharacter").innerHTML = allCharacters;
     });
   }
+};
+// limpiar los select si eligen otro
+const clean = (sel1, sel2) => {
+  sel1.value = sel1.options[0].value;
+  sel2.value = sel2.options[0].value;
 };
