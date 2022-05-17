@@ -2,7 +2,7 @@ export const example = (papitas) => {
   console.log(papitas);
 };
 
-const getNames = (allInfo) => {
+export const getNames = (allInfo) => {
   const names = allInfo.map((i) => i.name);
   let onlyNames = [];
   names.forEach((name) => {
@@ -38,6 +38,7 @@ export const createDataNames = (names) => {
 };
 // filterData por nombres o nombres y lo seleccionado
 export const filterData = (search, allInfo, filter) => {
+  // ok test
   let dataCharacterSelected = [];
   if (filter) {
     dataCharacterSelected = allInfo.filter(
