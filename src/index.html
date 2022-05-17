@@ -21,12 +21,12 @@
       <!--------------------screen 1--------------------- Screen YES and NO ------------------->
       <div id="screen1">
         <div id="filterByAge">
-          <p id="questionOne">You must be 18+ to view this page</p>
-          <p id="questionTwo">Are you over oigtheen?</p>
+          <p id="questionOne" class="question">You must be 18+ to view this page</p>
+          <p id="questionTwo" class="question">Are you over oigtheen?</p>
         </div>
         <div id="buttons">
-          <button id="yes">Yes</button>
-          <button id="no">No</button>
+          <button id="yes" class="buttons">Yes</button>
+          <button id="no" class="buttons">No</button>
         </div>
       </div>
       <!--------------------------- screen2 ----------------------------Selectors---------------->
@@ -36,6 +36,9 @@
           <p id="information">You can search for name:</p>
         </div>
         <!---------------- Search by name ---------->
+        <div>
+          <p id="messageError"></p>
+        </div>
         <form id="formByName">
           <!-- <label for="searchByName">Search by Name</label> -->
           <input
@@ -48,9 +51,7 @@
           <div id="lookDataNames"></div>
           <button id="goName">Go</button>
         </form>
-        <div>
-          <p id="messageError"></p>
-        </div>
+        
         <div id="allSelectors">
           <!--------------- Selector by Species ---------->
           <div class="selectorContainer" id="selectorSpecies">
@@ -77,9 +78,9 @@
       </div>
       <!--------------- List as selected  ---------->
       <div id="listAsSelected">
-        <!-- <div>
+        <div>
           <button id="closeList"></button>
-        </div> -->
+        </div>
         <li class="namesSelector"></li>
         <li class="namesSelector"></li>
       </div>
@@ -95,7 +96,7 @@
         </div>
       </div>
     </main>
-    <footer>
+    <footer id="linkAndMedia">
       <div id="linkGame">
         <p>GET IT NOW! POCKET MORTYS, GO TO PLAY</p>
       </div>
