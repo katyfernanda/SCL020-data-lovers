@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Data Lovers - Rick and Morty</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <a href="index.html">
+          <img
+            src="https://github.com/camicamposc/SCL020-data-lovers/blob/main/src/image/logoRickAndMorty.png?raw=true"
+            alt="logoRickAndMorty"
+        /></a>
+      </nav>
+    </header>
+    <main>
+      <!--------------------screen 1--------------------- Screen YES and NO ------------------->
+      <div id="screen1">
+        <div id="filterByAge">
+          <p id="questionOne" class="question">You must be 18+ to view this page</p>
+          <p id="questionTwo" class="question">Are you over oigtheen?</p>
+        </div>
+        <div id="buttons">
+          <button id="yes" class="buttons">Yes</button>
+          <button id="no" class="buttons">No</button>
+        </div>
+      </div>
+      <!--------------------------- screen2 ----------------------------Selectors---------------->
+      <div id="screen2" class="shade">
+        <div id="welcome">
+          <p id="welcomeText">Welcome</p>
+          <p id="information">You can search for name:</p>
+        </div>
+        <!---------------- Search by name ---------->
+        <div>
+          <p id="messageError"></p>
+        </div>
+        <form id="formByName">
+          <!-- <label for="searchByName">Search by Name</label> -->
+          <input
+            list="dataNames"
+            id="searchByName"
+            name="searchByName"
+            type="text"
+            autocomplete="off"
+          />
+          <div id="lookDataNames"></div>
+          <button id="goName">Go</button>
+        </form>
+        
+        <div id="allSelectors">
+          <!--------------- Selector by Species ---------->
+          <div class="selectorContainer" id="selectorSpecies">
+            <p>Species</p>
+            <select class="selectors" name="selectors" id="selSpecies">
+              <option disabled selected>Select by Species</option>
+            </select>
+          </div>
+          <!--------------- Selector by Planet ---------->
+          <div class="selectorContainer" id="selectorOrigin">
+            <p>Planet</p>
+            <select class="selectors" name="selectors" id="selOrigin">
+              <option disabled selected>Select by Planet of Origin</option>
+            </select>
+          </div>
+          <!--------------- Selector by Status ---------->
+          <div class="selectorContainer" id="selectorStatus">
+            <p>Status</p>
+            <select class="selectors" name="selectors" id="status">
+              <option disabled selected>Select by Status</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <!--------------- List as selected  ---------->
+      <div id="listAsSelected">
+        <div>
+          <button id="closeList"></button>
+        </div>
+        <li class="namesSelector"></li>
+        <li class="namesSelector"></li>
+      </div>
+
+      <!-- ---------------------------------- screen Card ------------------------------------- -->
+      <div id="screenCard">
+        <div>
+          <button id="closed">X</button>
+        </div>
+        <div id="cardCharacter">
+          <div id="image"></div>
+          <ul></ul>
+        </div>
+      </div>
+    </main>
+    <footer id="linkAndMedia">
+      <div id="linkGame">
+        <p>GET IT NOW! POCKET MORTYS, GO TO PLAY</p>
+      </div>
+      <div id="socialMedia">
+        <img
+          id="facebook"
+          src="https://github.com/camicamposc/SCL020-data-lovers/blob/main/src/image/Facebook.png?raw=true"
+        />
+        <img
+          id="instagram"
+          src="https://github.com/camicamposc/SCL020-data-lovers/blob/main/src/image/Instagram.png?raw=true"
+        />
+      </div>
+    </footer>
+    <script src="main.js" type="module"></script>
+  </body>
+</html>
