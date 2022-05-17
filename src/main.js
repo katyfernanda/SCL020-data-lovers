@@ -9,6 +9,9 @@ import {
   filterLetter,
   createDataNames,
   createNewCard,
+  count,
+  numberEpisodes,
+  episodeStatistics,
 } from "./data.js";
 // import {example} from './data.js';
 const screen1 = document.getElementById("screen1");
@@ -22,6 +25,7 @@ screenCard.style.display = "none";
 listAsSelected.style.display = "none";
 
 const allInfo = rickAndMortyData.results;
+console.log(numberEpisodes(allInfo));
 
 // ----------------screen1--------------------------------
 const btnNo = document.getElementById("no");
@@ -83,6 +87,7 @@ go.addEventListener("click", (event) => {
   listAsSelected.innerHTML = "";
   resetSelects();
   dataCharacterSelected = filterData(searchByName.value, allInfo);
+  console.log(dataCharacterSelected);
   if (dataCharacterSelected.length === 0) {
     messageError.innerHTML = "Name not found, try again";
   } else {
@@ -90,12 +95,19 @@ go.addEventListener("click", (event) => {
     screenCard.style.display = "block";
     let allCharacters = "";
     dataCharacterSelected.forEach((character) => {
+      let totalEpisodes = count(character.episode);
+      let statistics = episodeStatistics(
+        totalEpisodes,
+        numberEpisodes(allInfo)
+      );
       const newCard = createNewCard(character);
       allCharacters += newCard;
+      console.log(statistics);
     });
     document.getElementById("cardCharacter").innerHTML = allCharacters;
   }
 });
+//numero de episodios del character
 
 const status = document.getElementById("status");
 const origin = document.getElementById("selOrigin");

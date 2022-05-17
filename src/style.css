@@ -1,4 +1,8 @@
 /* -- Estilos de la primera vista index.html --*/
+* {
+    margin: 0;
+    padding: 0;
+}
 body {
     display: flex;
     flex-direction: column;
@@ -169,7 +173,20 @@ footer {
     max-width: 35px;
     margin: 0 0 3px 0;
 }
+#listEpisode{
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.episodes{
+    list-style-type:none;
+    text-align: center;
+    box-sizing: border-box;
+    max-width: 100%;
+    margin: 1%;
 
+}
 
 
 
