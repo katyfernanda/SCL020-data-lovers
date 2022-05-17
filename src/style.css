@@ -1,37 +1,37 @@
-/* -- Estilos de la primera vista index.html --*/
 body {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    justify-content: center;
     background-image: url("image/background.png");
     background-size: 100% 115%;
     background-attachment: fixed;
-    color: white;
     font-family: "Segoe UI";
-    font-size: x-large;
+    color: white;  
 }
-#filterByAge {
+a {
+    display: flex;
+    justify-content: center;
+}
+a img {
+    width: 80%;
+}
+/* estilos de la primera vista */
+#screen1 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 5%;
     letter-spacing: 0.35em;
     font-weight: bold;
-}
-#questionOne {
     font-size: xx-large;
 }
-#questionTwo {
-    font-size: x-large;
-}
-#buttons {
+.question {
     display: flex;
     justify-content: center;
 }
-#yes {
+.buttons {
     width: 100px;
     height: 35px;
-    margin-right: 100px;
+    margin: 40px 100px;
     border-radius: 5px;
     border-width: 3px;
     border-color: #9EFB07;
@@ -43,63 +43,47 @@ body {
     font-family: "Segoe UI";
     font-size: large;
 }
-#no {
-    width: 100px;
-    height: 35px;
-    margin-left: 100px;
-    border-radius: 5px;
-    border-width: 3px;
-    border-color: #9EFB07;
-    color: #9EFB07;
-    font-weight: bolder;
-    text-shadow: 0 0 3px #365503;
-    background-color: #08B2C9;
-    letter-spacing: 0.25em;
-    font-family: "Segoe UI";
-    font-size: large;
-}
-/* -- Estilos de la segunda vista index.html --*/
+/* estilos de la segund vista */
 #welcome {
     display: flex;
-    justify-content: center;
     flex-direction: column;
+    align-items: center;
     font-weight: bold;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.35em;
 }
 #welcomeText {
-    display: flex;
-    justify-content: center;
-    font-size: xxx-large;
+    font-size: xxx-large;   
 }
 #information {
-    display: flex;
-    justify-content: center;
     font-size: x-large;
 }
 /* -- Estilos de la busqueda por nombre --*/
+#messageError {
+    display: flex;
+    justify-content: center;
+    color: #9EFB07;
+    font-weight: bolder;
+    letter-spacing: 0.25em;
+}
 #formByName {
     display: flex;
     justify-content: center;
-    width: 800px;
-
 }
 #searchByName {
     background-color: #057f8f;
-    width: 250px;
-    height: 20px;
-    margin-left: 150px;
     border-radius: 5px;
     border-color: #9EFB07;
     color: white;
     font-weight: bolder;
-    width: 250px;
+    width: 400px;
     height: 40px;
     font-size: large;
     letter-spacing: 0.25em;
 }
 #goName {
     background-color: #08B2C9;
-    width: 50px;
+    width: 60px;
+    height: 46px;
     margin-left: 80px;
     color: #9EFB07;
     font-weight: bolder;
@@ -108,11 +92,6 @@ body {
     border-color: #9EFB07;
     border-radius: 5px;
 }
-#messageError {
-    color: #9EFB07;
-    font-weight: bolder;
-    letter-spacing: 0.25em;
-}
 /* -- Estilos de los selectores --*/
 #allSelectors {
     display: flex;
@@ -120,7 +99,8 @@ body {
     font-weight: bold;
     letter-spacing: 0.25em;
     font-size: large;
-    width: 900px;
+    width: 100%;
+    margin: 50px 0;
 }
 .selectorContainer {
     display: flex;
@@ -133,28 +113,41 @@ body {
     border-color: #9EFB07;
     color: white;
     border-radius: 5px;
-    width: 250px;
+    width: 300px;
     height: 40px;
     font-size: medium;
     letter-spacing: 0.25em;
 }
-/* -- Estilos del listado (resultado de selectores) --*/
-#listAsSelected {  
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    letter-spacing: 0.15em;
-    margin-top: 40px;
+/* estilos de listado y tarjeta */
+#listAsSelected {
+    margin: 50px 40%;
+}
+#screenCard {
+    margin: 20px 40%;
+}
+#closed {
+    margin: 10% 50%;
+    background: #08B2C9;
+    border: #9EFB07 solid 3px;
+    border-radius: 3px;
+}
+#closeList {
+    margin: 10% 40%;
+    background: #08B2C9;
+    border: #9EFB07 solid 3px;
+    border-radius: 3px;
 }
 /* -- Estilos del footer --*/
 footer {
     display: flex;
     justify-content: space-between;
-    margin-top: 80px;
-    width: 900px;
+    align-items: center;
+    margin: 50px 50px 0 50px;
     font-size: medium;
 }
 #linkGame {
+    display: flex;
+    align-items: center;
     color: black;
     font-weight: bolder;
     text-shadow: 0 0 3px #9EFB07;
@@ -169,8 +162,97 @@ footer {
     max-width: 35px;
     margin: 0 0 3px 0;
 }
-
-
-
-
-
+/* responsive para tablet */
+@media (max-width: 768px){
+    a img {
+        width: 80%;
+    }
+/* estilos de la primera vista */
+    #screen1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 30px;
+        letter-spacing: 0.15em;
+        font-weight: bold;
+        font-size: x-large;
+    }
+    .buttons {
+        margin: 40px 50px;
+    }
+/* estilos de la segund vista */
+    #welcome {
+        letter-spacing: 0.25em;
+    }
+    #welcomeText {
+        font-size: xx-large;   
+    }
+    #information {
+        font-size: large;
+    }
+    #searchByName {
+        width: 250px;
+        height: 30px;
+        font-weight: lighter;
+    }
+    #goName {
+        width: 45px;
+        height: 36px;
+    }
+    #messageError {
+        font-weight: lighter;
+    }
+    #listAsSelected {
+        margin: 20px 35%;
+    }
+    #screenCard {
+        margin: 20px 30%;
+    }
+    #closed {
+        margin: 10% 50%;
+    }
+    #closeList {
+        margin: 10% 30%;
+    }
+/* -- Estilos de los selectores --*/
+    #allSelectors {
+        display: flex;
+        justify-content: space-around;
+        font-weight: lighter;
+        letter-spacing: 0.15em;
+        font-size: medium;
+        width: 100%;
+        margin-top: 25px;
+    }
+    .selectorContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: large;
+    }
+    .selectors {
+        background-color:#057f8f;
+        border-color: #9EFB07;
+        color: white;
+        border-radius: 5px;
+        width: 90px;
+        height: 30%;
+        font-size: medium;
+        letter-spacing: 0.15em;
+    }
+    footer {
+        display: flex;
+        justify-content: space-around;
+        margin: 0;
+        font-size: small;
+    }
+    #linkGame {
+        display: flex;
+        align-items: center;
+        color: black;
+        font-weight: bolder;
+        text-shadow: 0 0 3px #9EFB07;
+        text-decoration: underline;
+        letter-spacing: 0.10em;
+    }
+}
