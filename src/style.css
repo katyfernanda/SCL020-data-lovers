@@ -162,6 +162,7 @@ footer {
     max-width: 35px;
     margin: 0 0 3px 0;
 }
+
 /* responsive para tablet */
 @media (max-width: 768px){
     a img {
@@ -256,3 +257,4 @@ footer {
         letter-spacing: 0.10em;
     }
 }
+

@@ -127,7 +127,6 @@ export const createNewCard = (info) => {
         ""
       )}</li>`)
   );
-  //text.replace("Microsoft", "W3Schools");
   console.log(episodes);
   const structureCard = `<div id="cardCharacter">
     <div>
@@ -141,6 +140,32 @@ export const createNewCard = (info) => {
         <li id="origin-${id}">Origin planet: ${origin.name}</li>
         <li id="allEpisode">Episodes:<ul id="listEpisode">${episodes}</ul></li>
      </ul>
+     <div id="statisticsEpisodes">
+     </div>
   </div>`;
   return structureCard;
+};
+//traer todos lo episodios
+//contarlos
+//contar los episodios que tiene el porcentaje
+//crear el valor
+//funcion que trae los episodios no repetidos
+export const count = (data) => {
+  return data.length;
+};
+export const numberEpisodes = (allInfo) => {
+  const allEpisodes = allInfo.map((character) => character.episode);
+  let totalEpisodes = [];
+  allEpisodes.forEach((episodes) => {
+    episodes.forEach((episode) => {
+      if (!totalEpisodes.includes(episode)) {
+        totalEpisodes.push(episode);
+      }
+    });
+  });
+  return totalEpisodes.length;
+};
+export const episodeStatistics = (countEpisodeCharacter, countEpisodes) => {
+  const staticts = ((countEpisodeCharacter * 100) / countEpisodes).toFixed();
+  return staticts;
 };
