@@ -17,9 +17,11 @@ const screenCard = document.getElementById("screenCard");
 const cardCharacter = document.getElementById("cardCharacter");
 const containerStatus = document.getElementById("status");
 const listAsSelected = document.getElementById("listAsSelected");
+const footer = document.getElementById("linkAndMedia")
 screen2.style.display = "none";
 screenCard.style.display = "none";
 listAsSelected.style.display = "none";
+// footer.style.display = "none";
 
 const allInfo = rickAndMortyData.results;
 
@@ -34,6 +36,7 @@ const btnYes = document.getElementById("yes");
 btnYes.addEventListener("click", () => {
   screen1.style.display = "none";
   screen2.style.display = "block";
+  // footer.style.display = "block";
   // -----------al seleccionar yes se cargan los selectores
   //selector por Species
 
