@@ -6,12 +6,20 @@ import {
   allSpecies,
   allStatus,
   allOrigin,
+  selectCharacters,
+  lookSelect,
+  createNewCard,
+  count,
+  numberEpisodes,
+  episodeStatistics
 } from "../src/data.js";
 const data = [
   {
     name: "Rick Sanchez",
     status: "Dead",
     species: "Human",
+    id: 1,
+    gender: "Male",
     origin: {
       name: "Earth (Evil Rick's Target Dimension)",
     },
@@ -159,7 +167,7 @@ describe("test for allStatus", () => {
   });
 });
 describe("test for allOrigin", () => {
-  it("slould return array with planet origin", () => {
+  it("should return array with planet origin", () => {
     const planetOriginData = [
       "Earth (Evil Rick's Target Dimension)",
       "Earth (C-137)",
@@ -172,3 +180,50 @@ describe("test for allOrigin", () => {
     expect(origin).toEqual(planetOriginData);
   });
 });
+describe("test for selectCharacters", () => {
+  it("should return array with objects", () => {
+    const specieCharacters = [data[data.length-1]];
+    const select = "Alien";
+    const selecCharacters = selectCharacters(select, data);
+    expect(selecCharacters).toEqual(specieCharacters);
+    expect(selecCharacters).not.toHaveLength(2);
+  })
+})
+describe("test for lookSelect", () => {
+  it("should return a string", () => {
+    const select = "Dead";
+    const lookSelects = lookSelect(select, data);
+    const stringTitle = `<h3>${select}</h3>`
+    expect(typeof lookSelects).toBe("string");
+    expect (lookSelects).toContain(stringTitle);
+  })
+})
+describe("test for createNewCard", () => {
+  it("should return a string with data character select", () => {
+    const select = data[0];
+    const liGender = `<li id="gender-${select.id}">Gender: ${select.gender}</li>`
+    const createCard = createNewCard (select);
+    expect(typeof createCard).toBe("string");
+    expect(createCard).toContain(liGender);
+  })
+})
+describe("test for count", () => {
+  it ("should return a numbers of elements", () => {
+    const elements = count(data);
+    expect(elements).toBe(5);
+  })
+})
+describe("test for numberEpisodes", () => {
+  it ("should return number of all episodes", () => {
+    const episodeNum = numberEpisodes(data);
+    expect(episodeNum).toBe(31);
+  })
+})
+describe("test for episodeStatistics", () => {
+  it ("should return number", () => {
+    const episodeCaracter = data[0].episode.length
+    const totalEpisode = numberEpisodes(data);
+    const number = episodeStatistics(episodeCaracter, totalEpisode);
+    expect(number).toBe("3");
+  })
+})
