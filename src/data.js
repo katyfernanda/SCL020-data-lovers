@@ -1,8 +1,9 @@
-export const example = (papitas) => {
-  console.log(papitas);
-};
+// export const example = (papitas) => {
+//   console.log(papitas);
+// };
 
 export const getNames = (allInfo) => {
+  //oktest
   const names = allInfo.map((i) => i.name);
   let onlyNames = [];
   names.forEach((name) => {
@@ -15,6 +16,7 @@ export const getNames = (allInfo) => {
 
 // referencia de nombre segun lo escrito
 export const filterLetter = (search, allInfo) => {
+  //oktest
   let dataCharacterSelected = [];
   const names = getNames(allInfo);
   names.forEach((name) => {
@@ -29,6 +31,7 @@ export const filterLetter = (search, allInfo) => {
 };
 
 export const createDataNames = (names) => {
+  //oktest
   let dataNames = `<datalist id="dataNames">`;
   names.forEach(
     (name) => (dataNames += `<option value="${name}">${name}</option>`)
@@ -38,7 +41,7 @@ export const createDataNames = (names) => {
 };
 // filterData por nombres o nombres y lo seleccionado
 export const filterData = (search, allInfo, filter) => {
-  // ok test
+  //oktest
   let dataCharacterSelected = [];
   if (filter) {
     dataCharacterSelected = allInfo.filter(
