@@ -1,10 +1,15 @@
-import { filterData, getNames } from "../src/data.js";
+import {
+  filterData,
+  filterLetter,
+  getNames,
+  createDataNames,
+  allSpecies,
+} from "../src/data.js";
 const data = [
   {
     name: "Rick Sanchez",
     status: "Dead",
     species: "Human",
-    gender: "Male",
     origin: {
       name: "Earth (Evil Rick's Target Dimension)",
     },
@@ -16,7 +21,6 @@ const data = [
     name: "Rick Sanchez",
     status: "Alive",
     species: "Human",
-    gender: "Male",
     origin: {
       name: "Earth (C-137)",
     },
@@ -60,17 +64,34 @@ const data = [
     name: "Rick Sanchez",
     status: "Dead",
     species: "Human",
-
-    gender: "Male",
     origin: {
-      name: "Earth (Replacement Dimension)",
-    },
-    location: {
       name: "Earth (Replacement Dimension)",
     },
     image:
       "https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/293.jpeg",
     episode: ["https://rickandmortyapi.com/api/episode/6"],
+  },
+  {
+    name: "Albert Einstein",
+    status: "Dead",
+    species: "Human",
+    origin: {
+      name: "Earth (C-137)",
+    },
+    image:
+      "https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/11.jpeg",
+    episode: ["https://rickandmortyapi.com/api/episode/12"],
+  },
+  {
+    name: "Alien Morty",
+    status: "unknown",
+    species: "Alien",
+    origin: {
+      name: "unknown",
+    },
+    image:
+      "https://raw.githubusercontent.com/Laboratoria/rick-and-morty-images/master/images/14.jpeg",
+    episode: ["https://rickandmortyapi.com/api/episode/10"],
   },
 ];
 
@@ -79,18 +100,46 @@ describe("test for filterData", () => {
     expect(typeof filterData).toBe("function");
   });
   it("should return an array with at least 1 object", () => {
-    let search = "Rick Sanchez";
-    let item = [data[1]];
-    let filter = "Alive";
-    expect(filterData(search, data, filter)).toEqual(item);
+    const search = "Rick Sanchez";
+    const item = [data[1]];
+    const filter = "Alive";
+    const filterInfo = filterData(search, data, filter);
+    expect(filterInfo).toEqual(item);
   });
 });
+
 describe("test for getNames", () => {
   it("is a function", () => {
     expect(typeof getNames).toBe("function");
   });
   it("should return an array with object", () => {
-    let names = ["Rick Sanchez"];
-    expect(getNames(data)).toEqual(names);
+    expect(getNames(data)).toHaveLength(3);
+  });
+});
+
+describe("test for filterLetter", () => {
+  it("must return an array that does not contain an element", () => {
+    const search = "a";
+    const name = "Rick Sanchez";
+    const filterByLetter = filterLetter(search, data);
+    expect(filterByLetter).not.toContain(name);
+  });
+});
+
+describe("test for createDataNames", () => {
+  it("should return string html options ", () => {
+    const names = ["Filomena", "Pancrasia"];
+    const options = `<option value="${names[0]}">${names[0]}</option><option value="${names[1]}">${names[1]}</option>`;
+    const dataNames = createDataNames(names);
+    expect(typeof dataNames).toBe("string");
+    expect(dataNames).toContain(options);
+  });
+});
+
+describe("test for allSpecies", () => {
+  it("should return array with species", () => {
+    const twoSpecies = ["Human", "Alien"];
+    const species = allSpecies(data);
+    expect(species).toContain(twoSpecies[0]);
   });
 });
