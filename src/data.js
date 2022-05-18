@@ -97,7 +97,7 @@ export const allOrigin = (allInfo) => {
   return onlyOrigin;
 };
 // funcion que trae los personajes segun lo seleccionado
-export const selectCharacters = (select, allInfo) => {
+export const selectCharacters = (select, allInfo) => { //ok Test
   let machtCharacters = allInfo.filter(
     (info) =>
       info.species == select ||
@@ -108,7 +108,7 @@ export const selectCharacters = (select, allInfo) => {
 };
 
 //mostrando nonbres segun lo seleccionado---
-export const lookSelect = (select, characters) => {
+export const lookSelect = (select, characters) => { // ok test
   const names = characters.map((character) => character.name);
   names.sort();
   let listCharacter = `<div>
@@ -122,7 +122,7 @@ export const lookSelect = (select, characters) => {
 };
 
 // ------------------------------funcion que crea cada tarjeta-------
-export const createNewCard = (info) => {
+export const createNewCard = (info) => { //ok Test
   let { id, image, name, species, status, gender, origin, episode } = info;
   console.log(episode); // lo trae como un array con objetos, cada objeto es 1 episodio
   let episodes = "";
