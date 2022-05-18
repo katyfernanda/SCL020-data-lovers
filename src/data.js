@@ -60,6 +60,7 @@ export const filterData = (search, allInfo, filter) => {
 };
 // funcion que trae las especies no repetidas
 export const allSpecies = (allInfo) => {
+  //oktest
   const allInfoSpecies = allInfo.map((i) => i.species);
   let onlySpecies = [];
   allInfoSpecies.forEach((element) => {
@@ -72,6 +73,7 @@ export const allSpecies = (allInfo) => {
 };
 // funcion que trae los estados no repetidos
 export const allStatus = (allInfo) => {
+  //oktest
   const infoAllStatus = allInfo.map((i) => i.status);
   let onlyStatus = [];
   infoAllStatus.forEach((element) => {

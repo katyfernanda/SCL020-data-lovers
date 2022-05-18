@@ -4,6 +4,8 @@ import {
   getNames,
   createDataNames,
   allSpecies,
+  allStatus,
+  allOrigin,
 } from "../src/data.js";
 const data = [
   {
@@ -104,7 +106,9 @@ describe("test for filterData", () => {
     const item = [data[1]];
     const filter = "Alive";
     const filterInfo = filterData(search, data, filter);
+    const filterInfoUnfiltered = filterData(search, data);
     expect(filterInfo).toEqual(item);
+    expect(filterInfoUnfiltered).toHaveLength(3);
   });
 });
 
@@ -138,8 +142,33 @@ describe("test for createDataNames", () => {
 
 describe("test for allSpecies", () => {
   it("should return array with species", () => {
-    const twoSpecies = ["Human", "Alien"];
+    const twoSpecies = ["Alien", "Human"];
     const species = allSpecies(data);
     expect(species).toContain(twoSpecies[0]);
+    expect(species).toHaveLength(2);
+    expect(species).toEqual(twoSpecies);
+  });
+});
+
+describe("test for allStatus", () => {
+  it("should return array with status", () => {
+    const threeStatus = ["Alive", "Dead", "unknown"];
+    const status = allStatus(data);
+    expect(status).toHaveLength(3);
+    expect(status).toEqual(threeStatus);
+  });
+});
+describe("test for allOrigin", () => {
+  it("slould return array with planet origin", () => {
+    const planetOriginData = [
+      "Earth (Evil Rick's Target Dimension)",
+      "Earth (C-137)",
+      "Earth (Replacement Dimension)",
+      "unknown",
+    ];
+    planetOriginData.sort();
+    const origin = allOrigin(data);
+    expect(origin).toHaveLength(4);
+    expect(origin).toEqual(planetOriginData);
   });
 });
