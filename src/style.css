@@ -154,9 +154,15 @@ footer {
     text-decoration: underline;
     letter-spacing: 0.15em;
 }
+#socialMedia {
+    display: flex;
+}
 #socialMedia img {
+    display: flex;
+    flex-direction: row;
     width: 40px;
     margin-top: 10px;
+    margin-left: 10px;
 }
 #facebook {
     max-width: 35px;
@@ -195,15 +201,14 @@ footer {
     .question {
         display: flex;
         justify-content: center;
-        margin-top: 50px;
-        
+        margin: 70px 0;
     }
     #buttons {
         display: flex;
     }
     .buttons {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         width: 80px;
         height: 35px;
         border-radius: 5px;
@@ -217,6 +222,7 @@ footer {
         letter-spacing: 0.25em;
         font-family: "Segoe UI";
         font-size: large;
+        margin: 30px;
     }
     /* estilos de la segund vista */
     #welcome {
@@ -325,9 +331,10 @@ footer {
     /* -- Estilos del footer --*/
     footer {
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         align-items: center;
-        font-size: small;
+        font-size: smaller;
+        margin: 100px 0 0 0;
     }
     #linkGame {
         display: flex;
@@ -337,9 +344,10 @@ footer {
         text-shadow: 0 0 3px #9EFB07;
         text-decoration: underline;
         width: 50%;
+        font-size: x-small;
     }
-    #socialMedia img {
-        width: 40px;
+    #socialMedia img {      
+        width: 30px;
         margin-top: 10px;
     }
     #facebook {
