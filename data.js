@@ -1,8 +1,9 @@
-export const example = (papitas) => {
-  console.log(papitas);
-};
+// export const example = (papitas) => {
+//   console.log(papitas);
+// };
 
-const getNames = (allInfo) => {
+export const getNames = (allInfo) => {
+  //oktest
   const names = allInfo.map((i) => i.name);
   let onlyNames = [];
   names.forEach((name) => {
@@ -15,6 +16,7 @@ const getNames = (allInfo) => {
 
 // referencia de nombre segun lo escrito
 export const filterLetter = (search, allInfo) => {
+  //oktest
   let dataCharacterSelected = [];
   const names = getNames(allInfo);
   names.forEach((name) => {
@@ -29,6 +31,7 @@ export const filterLetter = (search, allInfo) => {
 };
 
 export const createDataNames = (names) => {
+  //oktest
   let dataNames = `<datalist id="dataNames">`;
   names.forEach(
     (name) => (dataNames += `<option value="${name}">${name}</option>`)
@@ -38,6 +41,7 @@ export const createDataNames = (names) => {
 };
 // filterData por nombres o nombres y lo seleccionado
 export const filterData = (search, allInfo, filter) => {
+  //oktest
   let dataCharacterSelected = [];
   if (filter) {
     dataCharacterSelected = allInfo.filter(
@@ -56,6 +60,7 @@ export const filterData = (search, allInfo, filter) => {
 };
 // funcion que trae las especies no repetidas
 export const allSpecies = (allInfo) => {
+  //oktest
   const allInfoSpecies = allInfo.map((i) => i.species);
   let onlySpecies = [];
   allInfoSpecies.forEach((element) => {
@@ -68,6 +73,7 @@ export const allSpecies = (allInfo) => {
 };
 // funcion que trae los estados no repetidos
 export const allStatus = (allInfo) => {
+  //oktest
   const infoAllStatus = allInfo.map((i) => i.status);
   let onlyStatus = [];
   infoAllStatus.forEach((element) => {
@@ -91,7 +97,7 @@ export const allOrigin = (allInfo) => {
   return onlyOrigin;
 };
 // funcion que trae los personajes segun lo seleccionado
-export const selectCharacters = (select, allInfo) => {
+export const selectCharacters = (select, allInfo) => { //ok Test
   let machtCharacters = allInfo.filter(
     (info) =>
       info.species == select ||
@@ -102,7 +108,7 @@ export const selectCharacters = (select, allInfo) => {
 };
 
 //mostrando nonbres segun lo seleccionado---
-export const lookSelect = (select, characters) => {
+export const lookSelect = (select, characters) => { // ok test
   const names = characters.map((character) => character.name);
   names.sort();
   let listCharacter = `<div>
@@ -116,7 +122,7 @@ export const lookSelect = (select, characters) => {
 };
 
 // ------------------------------funcion que crea cada tarjeta-------
-export const createNewCard = (info) => {
+export const createNewCard = (info) => { //ok Test
   let { id, image, name, species, status, gender, origin, episode } = info;
   console.log(episode); // lo trae como un array con objetos, cada objeto es 1 episodio
   let episodes = "";

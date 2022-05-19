@@ -206,8 +206,13 @@ footer {
     #listAsSelected {
         margin: 20px 35%;
     }
-    #screenCard {
+    /* #screenCard {
         margin: 20px 30%;
+    } */
+    #cardCharacter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
     #closed {
         margin: 10% 50%;
@@ -257,4 +262,188 @@ footer {
         letter-spacing: 0.10em;
     }
 }
-
+/* responsivo para celular */
+@media (max-width: 360px){
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background-image: url("image/background.png");
+        background-size: 120% 115%;
+        background-attachment: fixed;
+        font-family: "Segoe UI";
+        color: white;  
+    }
+    a {
+        display: flex;
+        justify-content: center;
+    }
+    a img {
+        width: 100%;
+        margin-top: 40px;
+    }
+    /* estilos de la primera vista */
+    #screen1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        letter-spacing: 0.15em;
+        font-weight: bold;
+        font-size: x-large;
+        text-align: center;
+    }
+    .question {
+        display: flex;
+        justify-content: center;
+        margin-top: 50px;
+        
+    }
+    #buttons {
+        display: flex;
+    }
+    .buttons {
+        display: flex;
+        justify-content: space-around;
+        width: 80px;
+        height: 35px;
+        border-radius: 5px;
+        border-width: 3px;
+        border-color: #9EFB07;
+        color: #9EFB07;
+        font-weight: bolder;
+        text-align: center;
+        text-shadow: 0 0 3px #365503;
+        background-color: #08B2C9;
+        letter-spacing: 0.25em;
+        font-family: "Segoe UI";
+        font-size: large;
+    }
+    /* estilos de la segund vista */
+    #welcome {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        letter-spacing: 0.35em;
+    }
+    #welcomeText {
+        font-size: xx-large; 
+        font-weight: bolder;  
+    }
+    #information {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        font-size: x-large;
+        font-weight: lighter;
+    }
+    /* -- Estilos de la busqueda por nombre --*/
+    #messageError {
+        display: flex;
+        justify-content: center;
+        color: #9EFB07;
+        font-weight: bolder;
+        letter-spacing: 0.25em;
+    }
+    #formByName {
+        display: flex;
+        justify-content: space-around;    
+    }
+    #searchByName {
+        background-color: #057f8f;
+        border-radius: 5px;
+        border-color: #9EFB07;
+        color: white;
+        font-weight: bolder;
+        width: 200px;
+        height: 40px;
+        font-size: large;
+        letter-spacing: 0.25em;
+    }
+    #goName {
+        background-color: #08B2C9;
+        width: 50px;
+        height: 46px;
+        margin-left: 80px;
+        color: #9EFB07;
+        font-weight: bolder;
+        font-size: large;
+        letter-spacing: 0.25em;
+        border-color: #9EFB07;
+        border-radius: 5px;
+    }
+    /* -- Estilos de los selectores --*/
+    #allSelectors {
+        display: flex;
+        flex-direction: column;
+        font-weight: bold;
+        letter-spacing: 0.25em;
+        font-size: large;
+        width: 100%;
+        margin: 50px 0;
+    }
+    .selectorContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: 30px 0;
+        font-size: x-large;
+    }
+    .selectors {
+        background-color:#057f8f;
+        border-color: #9EFB07;
+        color: white;
+        border-radius: 5px;
+        width: 300px;
+        height: 40px;
+        font-size: medium;
+        letter-spacing: 0.25em;
+    }
+    /* estilos de listado y tarjeta */
+    #cardCharacter {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #cardCharacter img {
+        margin: 10px 0;
+        width: 150px;
+    }
+    #closed {
+        margin: 10% 50%;
+        background: #08B2C9;
+        border: #9EFB07 solid 3px;
+        border-radius: 3px;
+    }
+    #closeList {
+        margin: 10% 40%;
+        background: #08B2C9;
+        border: #9EFB07 solid 3px;
+        border-radius: 3px;
+    }
+    /* -- Estilos del footer --*/
+    footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: small;
+    }
+    #linkGame {
+        display: flex;
+        align-items: center;
+        color: black;
+        font-weight: bolder;
+        text-shadow: 0 0 3px #9EFB07;
+        text-decoration: underline;
+        width: 50%;
+    }
+    #socialMedia img {
+        width: 40px;
+        margin-top: 10px;
+    }
+    #facebook {
+        max-width: 35px;
+        margin: 0 0 3px 0;
+    }
+}

@@ -20,7 +20,7 @@ const screenCard = document.getElementById("screenCard");
 const cardCharacter = document.getElementById("cardCharacter");
 const containerStatus = document.getElementById("status");
 const listAsSelected = document.getElementById("listAsSelected");
-const footer = document.getElementById("linkAndMedia");
+
 screen2.style.display = "none";
 screenCard.style.display = "none";
 listAsSelected.style.display = "none";
