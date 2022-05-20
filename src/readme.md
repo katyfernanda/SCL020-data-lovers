@@ -80,7 +80,8 @@ Haz click <A HREF="https://jamboard.google.com/d/1lHILrCQkzP8QvDUE2cQzSkybnS9O9E
 
 El prototipo de alta fidelidad lo trabajamos en figma y tambien trabajamos la version movil (como queriamos que quedara con responsive). Aquí ya contamos con una idea mas detallada de lo que se queriamos lograr y los filtros que usariamos para manejar la data, comenzamos trabajando una paleta de colores, pero recibimos feedback en cuanto a esto y lo cambiamos por por la paleta de colores que dejamos hasta presentar el trabajo completo.
 
-Esta es la imagen de nuestra primera paleta de colores.
+Esta es la imagen de nuestra primera paleta de colores.<br/>
+
 "<img src ="https://github.com/camicamposc/SCL020-data-lovers/blob/main/src/image/Paleta%20de%20colores.jpg?raw=true" width = "450" height = "450" alt = "Paleta de colores">" <br/>
 
 Haz click <A HREF="https://www.figma.com/file/oFftNozv3DQPw7vSDt2CIz/Untitled?node-id=0%3A1">  aquí </A> para ver el prototipo final en tu navegador. 
