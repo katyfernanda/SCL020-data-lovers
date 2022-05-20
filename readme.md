@@ -43,7 +43,7 @@ CA:
 a) Debe existir mas de un selector
 b) Al seleccionar una segunda opción, la selección anterior debe reiniciarse (volver a su estado original)
 
-NOTA: Esta historia de usuario es igual para cada selector (3 veces)
+NOTA: Esta historia de usuario es igual para cada selector (3 veces)<br/>
 7.- Como usuario en la segunda vista, poder ver todos los estados de los personajes que salen en la serie, para poder seleccionar uno
 CA: 
 a) La selección me debe llevar a un listado de todos los personajes que tengan el estado seleccionado
@@ -54,7 +54,7 @@ CA:
 a) Generar un boton de cierre para las diferentes busquedas.
 b) Este boton debe existir en todas las vistas que existan como consecuencia a la búsqueda
 
-NOTA: Esta historia de usuario es igual para cada selector (3 veces)
+NOTA: Esta historia de usuario es igual para cada selector (3 veces)<br/>
 9.- Como usuario, quiero que el listado de seres de ese planeta, me direccione a su ficha de informacion
 CA: 
 a) El listado de personajes, deben ser hipervínculos que me lleven a la información del personaje particular.
@@ -74,13 +74,17 @@ b) Un icono de Instagram que nos direccione a la pag de fans en Instagram
 
 Trabajamos el prototipo de baja fidelidad en linea para proyectar las ideas que teníamos y comenzar a generar las historias de usuario
 
-Haz click <A HREF=https://jamboard.google.com/d/1lHILrCQkzP8QvDUE2cQzSkybnS9O9EQH-tFtwjjdxAY/viewer?ts=6266acf6&f=0>  aquí </A> para ver el prototipo en tu navegador. 
+Haz click <A HREF="https://jamboard.google.com/d/1lHILrCQkzP8QvDUE2cQzSkybnS9O9EQH-tFtwjjdxAY/viewer?ts=6266acf6&f=0">  aquí </A> para ver el prototipo en tu navegador. 
 
 # Prototipo de Alta Fidelidad
 
-El prototipo de alta fidelidad lo trabajamos en figma y tambien trabajamos la version movil (como queriamos que quedara con responsive). Aquí ya contamos con una idea mas detallada de lo que se quería lograr entre ellas una paleta de colores, y los filtros que usariamos para manejar la data.
+El prototipo de alta fidelidad lo trabajamos en figma y tambien trabajamos la version movil (como queriamos que quedara con responsive). Aquí ya contamos con una idea mas detallada de lo que se queriamos lograr y los filtros que usariamos para manejar la data, comenzamos trabajando una paleta de colores, pero recibimos feedback en cuanto a esto y lo cambiamos por por la paleta de colores que dejamos hasta presentar el trabajo completo.
 
-Haz click <A HREF=https://www.figma.com/file/oFftNozv3DQPw7vSDt2CIz/Untitled?node-id=0%3A1>  aquí </A> para ver el prototipo en tu navegador. 
+Esta es la imagen de nuestra primera paleta de colores.<br/>
+
+"<img src ="https://github.com/camicamposc/SCL020-data-lovers/blob/main/src/image/Paleta%20de%20colores.jpg?raw=true" width = "450" height = "450" alt = "Paleta de colores">" <br/>
+
+Haz click <A HREF="https://www.figma.com/file/oFftNozv3DQPw7vSDt2CIz/Untitled?node-id=0%3A1">  aquí </A> para ver el prototipo final en tu navegador. 
 
 # lista de problematicas detectados en test
 
